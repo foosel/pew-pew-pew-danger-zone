@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://tg04bdkgpfyo"]
+
+[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_x84e7"]
+[ext_resource type="PackedScene" uid="uid://bqhltsvmpxpmr" path="res://scenes/bullet_emitter/bullet_emitter.tscn" id="2_861ch"]
+[ext_resource type="Texture2D" uid="uid://djt1ei5hr7ev6" path="res://assets/graphics/enemy_triangle.svg" id="2_iunhj"]
+[ext_resource type="PackedScene" uid="uid://bk8xhvidu2l88" path="res://scenes/bullet_pattern/straight_bullet_pattern.tscn" id="3_cufwe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixedp"]
+size = Vector2(32, 32)
+
+[node name="StraightEnemy" instance=ExtResource("1_x84e7")]
+
+[node name="Shadow" parent="." index="0"]
+texture = ExtResource("2_iunhj")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_iunhj")
+
+[node name="BulletEmitter" parent="." index="3" instance=ExtResource("2_861ch")]
+position = Vector2(0, 16)
+
+[node name="StraightBulletPattern" parent="BulletEmitter" index="0" instance=ExtResource("3_cufwe")]
+visible = false
+
+[node name="BulletEmitter2" parent="." index="4" instance=ExtResource("2_861ch")]
+position = Vector2(15, -15)
+firing_interval = 1.0
+
+[node name="StraightBulletPattern" parent="BulletEmitter2" index="0" instance=ExtResource("3_cufwe")]
+visible = false
+
+[node name="BulletEmitter3" parent="." index="5" instance=ExtResource("2_861ch")]
+position = Vector2(-15, -15)
+firing_interval = 1.0
+
+[node name="StraightBulletPattern" parent="BulletEmitter3" index="0" instance=ExtResource("3_cufwe")]
+visible = false
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("RectangleShape2D_ixedp")

@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvxey18okvxek"]
+
+[ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_vdakb"]
+[ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/empty_bar.svg" id="2_7h0kc"]
+[ext_resource type="Texture2D" uid="uid://b00wnffb0m68k" path="res://assets/graphics/player.svg" id="2_eiavf"]
+[ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/health_bar.svg" id="3_u2q4l"]
+[ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/bullet_bar.svg" id="4_nna8r"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_vdakb")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -62.5
+offset_right = 62.5
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="LeftBar" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(252, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LeftBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="LifeSymbol" type="TextureRect" parent="LeftBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_eiavf")
+stretch_mode = 2
+
+[node name="LifeCount" type="Label" parent="LeftBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x 3"
+
+[node name="HealthBar" type="TextureProgressBar" parent="LeftBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+max_value = 3.0
+value = 3.0
+fill_mode = 3
+texture_under = ExtResource("2_7h0kc")
+texture_progress = ExtResource("3_u2q4l")
+
+[node name="RightBar" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(252, 0)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="RightBar"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -257.0
+offset_right = 125.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="BulletBar" type="TextureProgressBar" parent="RightBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+max_value = 3.0
+value = 1.0
+fill_mode = 3
+texture_under = ExtResource("2_7h0kc")
+texture_progress = ExtResource("4_nna8r")

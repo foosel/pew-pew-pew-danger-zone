@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8lp5embosqbd"]
+
+[ext_resource type="Texture2D" uid="uid://dd4xgt8untua1" path="res://assets/graphics/smoke_particle.svg" id="1_hlliv"]
+[ext_resource type="Script" path="res://scenes/explosion/explosion.gd" id="1_ve6xy"]
+[ext_resource type="Texture2D" uid="uid://da30vy0kx3v75" path="res://assets/graphics/explosion_particle.svg" id="2_6u3hi"]
+[ext_resource type="AudioStream" uid="uid://bd6o7dkslmke7" path="res://assets/sfxr/explosion.sfxr" id="4_cbvdg"]
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_ve6xy")
+
+[node name="Smoke" type="CPUParticles2D" parent="."]
+emitting = false
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.5
+texture = ExtResource("1_hlliv")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.5
+
+[node name="Fire" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+texture = ExtResource("2_6u3hi")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 400.0
+scale_amount_min = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cbvdg")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

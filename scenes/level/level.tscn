@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvqm4ga3k8usn"]
+
+[ext_resource type="Texture2D" uid="uid://842pg1ky7wq5" path="res://assets/graphics/level1.svg" id="1_04t85"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1604, 633)
+texture = ExtResource("1_04t85")
+offset = Vector2(-964, -1633)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://0k410tacvxt0"]
+
+[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_npt5y"]
+[ext_resource type="Texture2D" uid="uid://cv15f0o7hspux" path="res://assets/graphics/enemy_circle.svg" id="2_hd31q"]
+[ext_resource type="PackedScene" uid="uid://bqhltsvmpxpmr" path="res://scenes/bullet_emitter/bullet_emitter.tscn" id="2_okrov"]
+[ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="3_3c8us"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gryk0"]
+radius = 16.0
+
+[node name="CircularEnemy" instance=ExtResource("1_npt5y")]
+
+[node name="Shadow" parent="." index="0"]
+texture = ExtResource("2_hd31q")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_hd31q")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("CircleShape2D_gryk0")
+
+[node name="BulletEmitter" parent="." index="3" instance=ExtResource("2_okrov")]
+
+[node name="CircularBulletPattern" parent="BulletEmitter" index="0" instance=ExtResource("3_3c8us")]
+visible = false
+segments = 6
+distance = 32
+offset_angle_per_firing = 30
+speed = 400.0
+steering = 50.0

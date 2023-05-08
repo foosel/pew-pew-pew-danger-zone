@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk8xhvidu2l88"]
+
+[ext_resource type="PackedScene" uid="uid://cb12a5apvjn51" path="res://scenes/bullet_pattern/bullet_pattern.tscn" id="1_tbi5j"]
+[ext_resource type="Script" path="res://scenes/bullet_pattern/straight_bullet_pattern.gd" id="2_p005b"]
+
+[node name="StraightBulletPattern" instance=ExtResource("1_tbi5j")]
+script = ExtResource("2_p005b")
+angle = 180.0
+distance = 0.0
