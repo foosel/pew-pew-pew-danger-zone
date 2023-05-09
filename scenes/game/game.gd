@@ -61,7 +61,7 @@ func _on_player_died():
 	explosion.position = player.position
 	add_child(explosion)
 	explosion.start()
-	remove_child(player)
+	call_deferred("remove_child", player)
 	respawn_timer.start()
 	camera.add_trauma(5)
 	lives -= 1

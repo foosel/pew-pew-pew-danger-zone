@@ -42,8 +42,8 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_8phmt"]
-resource_name = "respawned"
+[sub_resource type="Animation" id="Animation_8mq1l"]
+resource_name = "hurt"
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -70,8 +70,8 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_8mq1l"]
-resource_name = "hurt"
+[sub_resource type="Animation" id="Animation_8phmt"]
+resource_name = "respawned"
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false

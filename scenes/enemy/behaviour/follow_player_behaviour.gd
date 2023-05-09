@@ -5,7 +5,7 @@ class_name FollowPlayerBehaviour
 @export var offset: Vector2 = Vector2(0, -200)
 
 
-func _physics_process_behaviour(delta):
+func _physics_process_behaviour(_delta):
 	var difference = player.position + offset - enemy.position
 	var distance = difference.length()
 	var direction = difference.normalized()

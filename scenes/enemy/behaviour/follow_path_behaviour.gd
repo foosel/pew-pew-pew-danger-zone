@@ -15,7 +15,7 @@ func _ready() -> void:
 	path_points = path.curve.get_baked_points()
 
 
-func _physics_process_behaviour(delta) -> void:
+func _physics_process_behaviour(_delta) -> void:
 	var target = path_points[path_index]
 	var position = enemy.position
 	if position.distance_to(target) < 1:

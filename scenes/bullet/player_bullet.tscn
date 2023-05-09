@@ -20,6 +20,3 @@ shape = SubResource("RectangleShape2D_ol8nt")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 visible = true
 rect = Rect2(-4, -24, 8, 24)
-
-[node name="Impact" parent="." index="3"]
-position = Vector2(0, -24)
