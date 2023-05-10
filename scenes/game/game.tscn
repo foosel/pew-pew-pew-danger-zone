@@ -116,12 +116,14 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_shdmi")
-autoplay = true
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="healed" from="Player" to="." method="_on_player_healed"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
+[connection signal="scored" from="Player" to="." method="_on_player_scored"]
 [connection signal="shots_fired" from="Player" to="." method="_on_player_shots_fired"]
 [connection signal="died" from="CircularEnemy" to="." method="_on_enemy_died"]
+[connection signal="hurt" from="CircularEnemy" to="." method="_on_enemy_hurt"]
 [connection signal="shots_fired" from="CircularEnemy" to="." method="_on_enemy_shots_fired"]
 [connection signal="died" from="CircularEnemy2" to="." method="_on_enemy_died"]
 [connection signal="shots_fired" from="CircularEnemy2" to="." method="_on_enemy_shots_fired"]

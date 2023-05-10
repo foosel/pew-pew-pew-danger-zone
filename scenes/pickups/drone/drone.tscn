@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpd6b8yjwve24"]
+
+[ext_resource type="Script" path="res://scenes/pickups/drone/drone.gd" id="1_enu7v"]
+[ext_resource type="Texture2D" uid="uid://bhde3ienwfwyr" path="res://assets/graphics/drone.svg" id="1_oa5md"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sv0j4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kskmo"]
+
+[node name="Drone" type="CharacterBody2D" groups=["Drone"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_enu7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oa5md")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sv0j4")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_kskmo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -8,7 +8,7 @@
    version="1.1"
    id="svg6362"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="bullet.svg"
+   sodipodi:docname="points.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffa214;stroke:#ed7614;stroke-width:0.472375;stroke-linejoin:round;stroke-dasharray:none"
+       style="fill:#0069aa;stroke:#00396d;stroke-width:0.472375;stroke-linejoin:round;stroke-dasharray:none"
        id="rect6846"
        width="1.9116337"
        height="1.9116334"

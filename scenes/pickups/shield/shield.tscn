@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://1qwr33bi2h1h"]
+
+[ext_resource type="Script" path="res://scenes/pickups/shield/shield.gd" id="1_8jog7"]
+[ext_resource type="Texture2D" uid="uid://d1dlrssbgx0mh" path="res://assets/graphics/shield.svg" id="1_vqoqj"]
+[ext_resource type="AudioStream" uid="uid://bhyuw4sjujxp3" path="res://assets/sfxr/shield_down.sfxr" id="3_7ibym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i08ha"]
+radius = 33.0
+
+[sub_resource type="Animation" id="Animation_qd2s6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eaf4m"]
+resource_name = "pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lj768"]
+_data = {
+"RESET": SubResource("Animation_qd2s6"),
+"pulse": SubResource("Animation_eaf4m")
+}
+
+[node name="Shield" type="Area2D" groups=["Shield"]]
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("1_8jog7")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vqoqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i08ha")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_lj768")
+}
+
+[node name="ShieldSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7ibym")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

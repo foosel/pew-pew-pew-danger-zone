@@ -4,6 +4,10 @@ extends Node2D
 @export var duration: float = 0.2
 
 
+func _ready() -> void:
+	start()
+
+
 func start() -> void:
 	var smoke = $Smoke as CPUParticles2D
 	var fire = $Fire as CPUParticles2D

@@ -1,4 +1,5 @@
 extends Node2D
+class_name Game
 
 
 @onready var player = $Player as Player
@@ -8,6 +9,7 @@ extends Node2D
 @onready var focus_point = $FocusPoint as Node2D
 @onready var hud = $HUD as HUD
 @onready var explosion_scene = load("res://scenes/explosion/explosion.tscn") as PackedScene
+@onready var points_pickup_scene = load("res://scenes/pickups/points_pickup.tscn") as PackedScene
 
 var score = 0
 var lives = 3
@@ -34,6 +36,10 @@ func _on_player_shots_fired(scene, shots, homing):
 	bullet_manager.spawn_bullets(scene, shots, target)
 
 
+func _on_drone_shots_fired(scene, shots, homing):
+	pass
+
+
 func _on_enemy_shots_fired(scene, shots, homing):
 	var target = null
 	if homing:
@@ -41,15 +47,19 @@ func _on_enemy_shots_fired(scene, shots, homing):
 	bullet_manager.spawn_bullets(scene, shots, target)
 
 
-func _on_enemy_died(enemy):
-	var explosion = explosion_scene.instantiate()
-	explosion.position = enemy.position
-	add_child(explosion)
-	explosion.start()
+func _on_enemy_hurt(enemy: Enemy):
+	_add_points_pickups(enemy, "hurt")
+
+
+func _on_enemy_died(enemy: Enemy):
+	_add_points_pickups(enemy, "died")
+	_add_pickup(enemy)
+	_add_explosion(enemy.position)
+
 	camera.add_trauma(5)
 	score += enemy.score
 	hud.set_score(score)
-
+ 
 
 func _on_player_hurt():
 	camera.add_trauma(1)
@@ -57,16 +67,20 @@ func _on_player_hurt():
 
 
 func _on_player_died():
-	var explosion = explosion_scene.instantiate()
-	explosion.position = player.position
-	add_child(explosion)
-	explosion.start()
+	_add_explosion(player.position)
+
 	call_deferred("remove_child", player)
+
 	respawn_timer.start()
 	camera.add_trauma(5)
 	lives -= 1
 	hud.disable_bars()
 	hud.set_lives(lives)
+
+
+func _on_drone_died(drone: Drone):
+	_add_explosion(drone.position)
+	camera.add_trauma(1)
 
 
 func _on_respawn_timer_timeout():
@@ -77,3 +91,42 @@ func _on_respawn_timer_timeout():
 	player.respawn(respawn_position)
 	add_child(player)
 	hud.set_health(player.health)
+
+
+func _on_player_healed():
+	hud.set_health(player.health)
+
+
+func _on_player_scored(amount):
+	score += amount
+	hud.set_score(score)
+
+
+func _add_explosion(position: Vector2) -> void:
+	var explosion = explosion_scene.instantiate()
+	explosion.position = position
+	add_child(explosion)
+
+
+func _add_pickup(enemy: Enemy) -> void:
+	var pickup_scene = enemy.get_pickup()
+	if pickup_scene:
+		var pickup = pickup_scene.instantiate()
+		pickup.position = enemy.position + Vector2(randf_range(-10, +10), randf_range(-10, +10))
+		call_deferred("add_child", pickup)
+
+
+func _add_points_pickups(enemy: Enemy, source: String) -> void:
+	var score = enemy.get_score_pickups(source)
+	var spread = 16
+	if source == "died":
+		spread = 64
+
+	for x in range(score):
+		var pickup = points_pickup_scene.instantiate()
+		pickup.position = Vector2(
+			enemy.position.x + randi_range(-spread, spread), 
+			enemy.position.y + randi_range(-spread, spread)
+		)
+		call_deferred("add_child", pickup)
+

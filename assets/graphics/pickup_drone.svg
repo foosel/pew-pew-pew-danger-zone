@@ -2,19 +2,19 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="12"
-   height="12"
-   viewBox="0 0 3.175 3.175"
+   width="32"
+   height="32"
+   viewBox="0 0 8.4666665 8.4666666"
    version="1.1"
-   id="svg6362"
+   id="svg30231"
    inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
-   sodipodi:docname="bullet.svg"
+   sodipodi:docname="pickup_drone.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview6364"
+     id="namedview30233"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -24,9 +24,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="13.455443"
-     inkscape:cx="28.835914"
-     inkscape:cy="23.930836"
+     inkscape:zoom="14.638496"
+     inkscape:cx="4.850225"
+     inkscape:cy="22.33836"
      inkscape:window-width="3072"
      inkscape:window-height="1630"
      inkscape:window-x="0"
@@ -34,18 +34,18 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs6359" />
+     id="defs30228" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#ffa214;stroke:#ed7614;stroke-width:0.472375;stroke-linejoin:round;stroke-dasharray:none"
-       id="rect6846"
-       width="1.9116337"
-       height="1.9116334"
-       x="1.2897893"
-       y="-0.95395964"
-       transform="matrix(0.71484742,0.69928046,-0.71484742,0.69928046,0,0)" />
+       style="fill:#f389f5;stroke:#db3ffd;stroke-width:0.516896;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect30767"
+       width="7.9497709"
+       height="3.7164373"
+       x="0.258448"
+       y="2.3751147"
+       rx="2.0850821" />
   </g>
 </svg>

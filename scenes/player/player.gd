@@ -10,15 +10,19 @@ const FULL_HEALTH = 3
 @export var side_shot_angle: float = 10
 
 signal shots_fired(bullet_scene: PackedScene, shots: Array)
+signal healed()
 signal hurt()
 signal died()
+signal scored(amount: int)
 
 var health: int = FULL_HEALTH
 var last_shot: float = 0
 
 @onready var shot_sfx = $ShotSFX as AudioStreamPlayer
 @onready var hurt_sfx = $HurtSFX as AudioStreamPlayer
+@onready var pickup_sfx = $PickupSFX as AudioStreamPlayer
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
+
 
 func _physics_process(_delta):
 	if health <= 0:
@@ -30,6 +34,7 @@ func _physics_process(_delta):
 
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * speed + Vector2.UP * Globals.scroll_speed
+
 	move_and_slide()
 
 	var visible_viewport = Globals.visible_viewport
@@ -88,9 +93,25 @@ func respawn(pos: Vector2) -> void:
 	health = FULL_HEALTH
 	position = pos
 	animation_player.play("respawned")
+	
+	
+func add_health(amount: int) -> void:
+	health = clamp(health + amount, 0, FULL_HEALTH)
+	healed.emit()
+	
+
+func add_points(amount: int) -> void:
+	scored.emit(amount)
 
 
 func _on_hurtbox_body_entered(body):
 	if body is Bullet:
 		(body as Bullet).explode()
 		hit()
+
+
+func _on_pickuparea_body_entered(body):
+	assert(body is Pickup)
+	pickup_sfx.play()
+	(body as Pickup).pickup(self)
+	

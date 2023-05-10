@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://bhyuw4sjujxp3"
+path="res://.godot/imported/shield_down.sfxr-a4599dcf1575eb66cc21c7c2d8aa4c80.sample"
+
+[deps]
+
+source_file="res://assets/sfxr/shield_down.sfxr"
+dest_files=["res://.godot/imported/shield_down.sfxr-a4599dcf1575eb66cc21c7c2d8aa4c80.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

@@ -2,7 +2,7 @@ extends Node2D
 class_name BulletPattern
 
 
-@export var speed = 400.0
+@export var speed = 200.0
 @export var steering = 50.0
 
 
