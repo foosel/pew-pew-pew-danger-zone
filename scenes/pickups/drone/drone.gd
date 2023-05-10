@@ -5,11 +5,13 @@ class_name Drone
 @export var radius = 64
 @export var health = 1
 @export var bullet_scene: PackedScene = load("res://scenes/bullet/drone_bullet.tscn") as PackedScene
+@export var player: Player
 
 @export var min_shot_interval = 1
 @export var max_shot_interval = 1.5
 
 @onready var timer = $Timer as Timer
+@onready var bullet_pattern = $CircularBulletPattern as BulletPattern
 
 signal shots_fired(bullet_scene: PackedScene, shots: Array)
 signal died(drone: Drone)
@@ -29,7 +31,11 @@ func _process(delta) -> void:
 
 
 func shoot() -> void:
-	print("Drone shot!")
+	var shots = bullet_pattern.generate_shots(player.position + position)
+	for shot in shots:
+		shot["scene"] = bullet_scene
+		shot["rotated"] = true
+	player.shots_fired.emit(shots)
 
 
 func _on_timer_timeout():

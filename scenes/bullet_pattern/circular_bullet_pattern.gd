@@ -2,7 +2,7 @@ extends BulletPattern
 
 
 @export var segments = 12
-@export var distance = 25
+@export var distance = 0
 @export var offset_angle_per_firing = 0
 
 

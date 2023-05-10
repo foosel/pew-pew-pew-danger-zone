@@ -20,31 +20,8 @@ func _process(delta):
 	Globals.visible_viewport.position.y = focus_point.position.y
 
 
-func _on_player_shots_fired(scene, shots, homing):
-	var target = null
-	if homing:
-		var closest = null
-		var closest_distance = 0
-		for enemy in get_tree().get_nodes_in_group("Enemy"):
-			enemy = enemy as Enemy
-			var distance = (player.position - enemy.position).length
-			if closest == null or distance < closest_distance:
-				closest = enemy
-				closest_distance = distance
-		target = closest
-
-	bullet_manager.spawn_bullets(scene, shots, target)
-
-
-func _on_drone_shots_fired(scene, shots, homing):
-	pass
-
-
-func _on_enemy_shots_fired(scene, shots, homing):
-	var target = null
-	if homing:
-		target = player
-	bullet_manager.spawn_bullets(scene, shots, target)
+func _on_shots_fired(shots):
+	bullet_manager.spawn_bullets(shots)
 
 
 func _on_enemy_hurt(enemy: Enemy):

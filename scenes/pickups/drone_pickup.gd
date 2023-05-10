@@ -11,10 +11,12 @@ func pickup(player: Player) -> void:
 		return
 	
 	var drone = drone_scene.instantiate() as Drone
-	player.add_child(drone)
-	player.move_child(drone, 1) # add after shadow
+	drone.player = player
 	
 	var game = player.owner as Game
-	drone.shots_fired.connect(game._on_player_shots_fired)
+	drone.shots_fired.connect(game._on_shots_fired)
 	drone.died.connect(game._on_drone_died)
+
+	player.call_deferred("add_child", drone)
+	player.call_deferred("move_child", drone, 1) # add after shadow
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://0ou2ap3t0dj"]
+
+[ext_resource type="PackedScene" uid="uid://dygd7daowtapq" path="res://scenes/bullet/enemy_bullet.tscn" id="2_38aqj"]
+[ext_resource type="Script" path="res://scenes/bullet_emitter/enemy_bullet_emitter.gd" id="2_y44e6"]
+
+[node name="EnemyBulletEmitter" type="Node2D" groups=["BulletEmitter"]]
+script = ExtResource("2_y44e6")
+bullet_scene = ExtResource("2_38aqj")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -4,19 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://bixe6ro3doobn" path="res://assets/graphics/bullet_player.svg" id="2_gbcio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8nt"]
-size = Vector2(4, 24)
+size = Vector2(4, 12)
 
 [node name="PlayerBullet" instance=ExtResource("1_y6ept")]
 collision_layer = 2
 
 [node name="Sprite2D" parent="." index="0"]
-position = Vector2(0, -12)
+position = Vector2(0, -6)
 texture = ExtResource("2_gbcio")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, -12)
+position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_ol8nt")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 visible = true
+position = Vector2(0, 0)
+scale = Vector2(1, 0.5)
 rect = Rect2(-4, -24, 8, 24)

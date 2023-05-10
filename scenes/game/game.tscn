@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq2p00mb4oj81"]
+[gd_scene load_steps=17 format=3 uid="uid://dwh0uleq84d4k"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_irmuf"]
 [ext_resource type="PackedScene" uid="uid://c1nj5wjj0bnap" path="res://scenes/player/player.tscn" id="1_qh5ax"]
-[ext_resource type="PackedScene" uid="uid://brjlmeww2201m" path="res://scenes/bullet/player_bullet.tscn" id="3_c58pl"]
-[ext_resource type="PackedScene" uid="uid://cvnj0wh76tb7m" path="res://scenes/bullet_manager/bullet_manager.tscn" id="5_knim2"]
+[ext_resource type="Script" path="res://scenes/bullet_manager/bullet_manager.gd" id="5_7ft26"]
 [ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="5_sh2al"]
 [ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="6_p2psb"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="7_1mqfo"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bos43k0dtskkv" path="res://scenes/camera/shakeable_camera.tscn" id="7_gys52"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_path_behaviour.gd" id="7_tgvrs"]
 [ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="9_g5wbb"]
+[ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="9_r6a23"]
 [ext_resource type="AudioStream" uid="uid://2sokr0hd4so8" path="res://assets/music/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="12_shdmi"]
 
 [sub_resource type="Animation" id="Animation_dsvh2"]
@@ -62,14 +62,14 @@ script = ExtResource("1_irmuf")
 
 [node name="Level" parent="." instance=ExtResource("9_g5wbb")]
 
-[node name="BulletManager" parent="." instance=ExtResource("5_knim2")]
-
 [node name="Player" parent="." instance=ExtResource("1_qh5ax")]
 position = Vector2(631, 659)
 motion_mode = 1
 slide_on_ceiling = false
 floor_stop_on_slope = false
-bullet_scene = ExtResource("3_c58pl")
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("5_7ft26")
 
 [node name="CircularEnemy" parent="." instance=ExtResource("5_sh2al")]
 position = Vector2(390, 102)
@@ -99,6 +99,12 @@ position = Vector2(853, 137)
 [node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy"]
 script = ExtResource("7_1mqfo")
 
+[node name="RectangularEnemy" parent="." instance=ExtResource("9_r6a23")]
+position = Vector2(614, 165)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="RectangularEnemy"]
+script = ExtResource("7_1mqfo")
+
 [node name="FocusPoint" type="Node2D" parent="."]
 
 [node name="Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("7_gys52")]
@@ -121,12 +127,12 @@ stream = ExtResource("12_shdmi")
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="scored" from="Player" to="." method="_on_player_scored"]
-[connection signal="shots_fired" from="Player" to="." method="_on_player_shots_fired"]
+[connection signal="shots_fired" from="Player" to="." method="_on_shots_fired"]
 [connection signal="died" from="CircularEnemy" to="." method="_on_enemy_died"]
 [connection signal="hurt" from="CircularEnemy" to="." method="_on_enemy_hurt"]
-[connection signal="shots_fired" from="CircularEnemy" to="." method="_on_enemy_shots_fired"]
+[connection signal="shots_fired" from="CircularEnemy" to="." method="_on_shots_fired"]
 [connection signal="died" from="CircularEnemy2" to="." method="_on_enemy_died"]
-[connection signal="shots_fired" from="CircularEnemy2" to="." method="_on_enemy_shots_fired"]
+[connection signal="shots_fired" from="CircularEnemy2" to="." method="_on_shots_fired"]
 [connection signal="died" from="StraightEnemy" to="." method="_on_enemy_died"]
-[connection signal="shots_fired" from="StraightEnemy" to="." method="_on_enemy_shots_fired"]
+[connection signal="shots_fired" from="StraightEnemy" to="." method="_on_shots_fired"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

@@ -5,8 +5,6 @@
 
 [node name="CircularBulletPattern" instance=ExtResource("1_rbqou")]
 script = ExtResource("1_patfb")
-segments = null
-distance = null
-offset_angle_per_firing = null
-speed = null
-steering = null
+segments = 12
+distance = 0
+offset_angle_per_firing = 0

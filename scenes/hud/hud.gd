@@ -25,7 +25,7 @@ func _process(_delta):
 
 func set_health(health: int) -> void:
 	health_bar.value = health
-	bullet_bar.value = 4 - health
+	bullet_bar.value = 6 - health
 	
 	
 func set_lives(lives: int) -> void:

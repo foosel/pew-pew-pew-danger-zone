@@ -18,7 +18,6 @@ texture = ExtResource("2_sm3kw")
 shape = SubResource("CircleShape2D_rnxhi")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
 position = Vector2(-2.38419e-07, -4.76837e-07)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

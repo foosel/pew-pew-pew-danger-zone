@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdpcc0pgxdpak"]
+
+[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_7nwnx"]
+[ext_resource type="PackedScene" uid="uid://0ou2ap3t0dj" path="res://scenes/bullet_emitter/enemy_bullet_emitter.tscn" id="2_5qbgf"]
+[ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="3_hcwwa"]
+
+[node name="RectangularEnemy" instance=ExtResource("1_7nwnx")]
+
+[node name="EnemyBulletEmitter" parent="." index="6" instance=ExtResource("2_5qbgf")]
+
+[node name="CircularBulletPattern" parent="EnemyBulletEmitter" index="1" instance=ExtResource("3_hcwwa")]
+segments = 4
+distance = 16

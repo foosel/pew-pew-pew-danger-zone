@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var health = 5
+@export var health = 10
 @export var speed = 500
 @export var score = 250
 
@@ -20,13 +20,13 @@ var pickup_weights = [
 	1.0, # nothing
 	1.0, # health
 	1.0, # shield
-	1.0  # drone
+	10.0  # drone
 ]
 
 var total_pickup_weight = 0.0
 var weighted_pickups = []
 
-signal shots_fired(scene: PackedScene, shots: Array, homing: bool)
+signal shots_fired(shots: Array)
 signal hurt(enemy: Enemy)
 signal died(enemy: Enemy)
 
@@ -48,8 +48,8 @@ func _ready() -> void:
 	print(total_pickup_weight)
 
 
-func shoot(scene: PackedScene, shots: Array, homing: bool) -> void:
-	shots_fired.emit(scene, shots, homing)
+func shoot(shots: Array) -> void:
+	shots_fired.emit(shots)
 
 
 func hit() -> void:
@@ -85,10 +85,13 @@ func _on_hurtbox_body_entered(body):
 	if body is Bullet:
 		(body as Bullet).explode()
 		hit()
+	elif body is Player:
+		hit()
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
-	despawn_timer.stop()
+	if despawn_timer:
+		despawn_timer.stop()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
