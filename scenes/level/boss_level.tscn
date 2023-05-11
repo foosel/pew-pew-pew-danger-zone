@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://dn33xe2y6kppj"]
+
+[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_26n5x"]
+[ext_resource type="Texture2D" uid="uid://mxib76pe5a5i" path="res://assets/graphics/boss_level.svg" id="2_moiik"]
+[ext_resource type="PackedScene" uid="uid://bbv7hcqo3x0ro" path="res://scenes/pickups/shield_pickup.tscn" id="3_vyxv1"]
+[ext_resource type="PackedScene" uid="uid://rgmn8uigxoms" path="res://scenes/pickups/health_pickup.tscn" id="4_o7x64"]
+[ext_resource type="PackedScene" uid="uid://swutg34po0wq" path="res://scenes/pickups/bomb_pickup.tscn" id="5_w51dp"]
+[ext_resource type="PackedScene" uid="uid://ceqo0i85uf16t" path="res://scenes/pickups/drone_pickup.tscn" id="6_o2vtg"]
+
+[node name="BossLevel" instance=ExtResource("1_26n5x")]
+
+[node name="Background" parent="." index="0"]
+texture = ExtResource("2_moiik")
+
+[node name="CollisionShape2D" parent="Background/Exit" index="0"]
+position = Vector2(7, -402)
+
+[node name="ShieldPickup" parent="." index="1" instance=ExtResource("3_vyxv1")]
+position = Vector2(319, 119)
+
+[node name="HealthPickup" parent="." index="2" instance=ExtResource("4_o7x64")]
+position = Vector2(543, 119)
+
+[node name="BombPickup" parent="." index="3" instance=ExtResource("5_w51dp")]
+position = Vector2(740, 119)
+
+[node name="DronePickup" parent="." index="4" instance=ExtResource("6_o2vtg")]
+position = Vector2(941, 119)

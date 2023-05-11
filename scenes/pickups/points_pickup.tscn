@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://da25xie0rg17k"]
+[gd_scene load_steps=5 format=3 uid="uid://da25xie0rg17k"]
 
 [ext_resource type="PackedScene" uid="uid://dg2b7v1iv7v8v" path="res://scenes/pickups/pickup.tscn" id="1_htqrp"]
 [ext_resource type="Texture2D" uid="uid://cnutbfui6ljl5" path="res://assets/graphics/pickup_point.svg" id="2_56m01"]
 [ext_resource type="Script" path="res://scenes/pickups/points_pickup.gd" id="2_g7shb"]
-[ext_resource type="AudioStream" uid="uid://5xfxq53vevmu" path="res://assets/sfxr/point.sfxr" id="4_13wyr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x2nst"]
 radius = 6.0
@@ -16,6 +15,3 @@ shape = SubResource("CircleShape2D_x2nst")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_56m01")
-
-[node name="SFX" parent="." index="2"]
-stream = ExtResource("4_13wyr")

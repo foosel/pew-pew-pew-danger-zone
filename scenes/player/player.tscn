@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1nj5wjj0bnap"]
+[gd_scene load_steps=14 format=3 uid="uid://c1nj5wjj0bnap"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ypgd0"]
 [ext_resource type="Texture2D" uid="uid://b00wnffb0m68k" path="res://assets/graphics/player.svg" id="2_1e1cj"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bk8xhvidu2l88" path="res://scenes/bullet_pattern/straight_bullet_pattern.tscn" id="7_hw6b1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3lvl2"]
-size = Vector2(32, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgmf3"]
 size = Vector2(32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cf0fv"]
@@ -46,7 +43,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_8mq1l"]
 resource_name = "hurt"
-length = 1.2
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,10 +51,10 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1), Color(1, 1, 1, 0.25098), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,7 +63,7 @@ tracks/1/path = NodePath("Hurtbox:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -134,15 +131,14 @@ collision_mask = 4
 polygon = PackedVector2Array(0, -20, 16, 11, -16, 11)
 
 [node name="Pickuparea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickuparea"]
-position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_tgmf3")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pickuparea"]
+polygon = PackedVector2Array(0, -20, 16, 11, -16, 11)
 
 [node name="PickupPull" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 16
 gravity_space_override = 3

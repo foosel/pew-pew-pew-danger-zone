@@ -1,108 +1,34 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwh0uleq84d4k"]
+[gd_scene load_steps=10 format=3 uid="uid://dwh0uleq84d4k"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_irmuf"]
 [ext_resource type="PackedScene" uid="uid://c1nj5wjj0bnap" path="res://scenes/player/player.tscn" id="1_qh5ax"]
 [ext_resource type="Script" path="res://scenes/bullet_manager/bullet_manager.gd" id="5_7ft26"]
-[ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="5_sh2al"]
-[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="6_p2psb"]
-[ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="7_1mqfo"]
 [ext_resource type="PackedScene" uid="uid://bvxey18okvxek" path="res://scenes/hud/hud.tscn" id="7_7p1ar"]
+[ext_resource type="PackedScene" uid="uid://dvogerkbh32v8" path="res://scenes/pause_menu/pause_menu.tscn" id="7_7rbag"]
 [ext_resource type="PackedScene" uid="uid://bos43k0dtskkv" path="res://scenes/camera/shakeable_camera.tscn" id="7_gys52"]
-[ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_path_behaviour.gd" id="7_tgvrs"]
-[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="9_g5wbb"]
-[ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="9_r6a23"]
+[ext_resource type="PackedScene" uid="uid://codck442xsoqk" path="res://scenes/game_over/game_over.tscn" id="7_s1g1g"]
+[ext_resource type="PackedScene" uid="uid://c64ogky21ax0g" path="res://scenes/stage_clear/stage_clear.tscn" id="8_6kcgt"]
 [ext_resource type="AudioStream" uid="uid://2sokr0hd4so8" path="res://assets/music/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="12_shdmi"]
-
-[sub_resource type="Animation" id="Animation_dsvh2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-200, -500)]
-}
-
-[sub_resource type="Animation" id="Animation_tkxat"]
-resource_name = "patrol"
-length = 5.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-200, -500), Vector2(200, -500)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hu6fx"]
-_data = {
-"RESET": SubResource("Animation_dsvh2"),
-"patrol": SubResource("Animation_tkxat")
-}
-
-[sub_resource type="Curve2D" id="Curve2D_nhjkl"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 876, 24, 0, 0, 0, 0, 584, 37, 0, 0, 0, 0, 331, 126, 0, 0, 0, 0, 544, 241, 0, 0, 0, 0, 927, 168)
-}
-point_count = 5
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_irmuf")
 
-[node name="Level" parent="." instance=ExtResource("9_g5wbb")]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_shdmi")
+autoplay = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("5_7ft26")
 
 [node name="Player" parent="." instance=ExtResource("1_qh5ax")]
 position = Vector2(631, 659)
 motion_mode = 1
 slide_on_ceiling = false
 floor_stop_on_slope = false
-
-[node name="BulletManager" type="Node2D" parent="."]
-script = ExtResource("5_7ft26")
-
-[node name="CircularEnemy" parent="." instance=ExtResource("5_sh2al")]
-position = Vector2(591, -392)
-
-[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy"]
-script = ExtResource("7_1mqfo")
-offset = Vector2(-200, -500)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CircularEnemy/FollowPlayerBehaviour"]
-autoplay = "patrol"
-libraries = {
-"": SubResource("AnimationLibrary_hu6fx")
-}
-
-[node name="CircularEnemy2" parent="." instance=ExtResource("5_sh2al")]
-position = Vector2(904, 26)
-
-[node name="FollowPathBehaviour" type="Node" parent="CircularEnemy2"]
-script = ExtResource("7_tgvrs")
-
-[node name="Path2D" type="Path2D" parent="CircularEnemy2/FollowPathBehaviour"]
-visible = false
-curve = SubResource("Curve2D_nhjkl")
-
-[node name="StraightEnemy" parent="." instance=ExtResource("6_p2psb")]
-position = Vector2(853, 137)
-
-[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy"]
-script = ExtResource("7_1mqfo")
-
-[node name="RectangularEnemy" parent="." instance=ExtResource("9_r6a23")]
-position = Vector2(595, -839)
-speed = 100
 
 [node name="FocusPoint" type="Node2D" parent="."]
 
@@ -115,29 +41,21 @@ target = NodePath("../FocusPoint")
 
 [node name="HUD" parent="." instance=ExtResource("7_7p1ar")]
 
-[node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+[node name="GameOver" parent="." instance=ExtResource("7_s1g1g")]
+visible = false
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_shdmi")
+[node name="StageClear" parent="." instance=ExtResource("8_6kcgt")]
+visible = false
 
+[node name="PauseMenu" parent="." instance=ExtResource("7_7rbag")]
+visible = false
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="drone_died" from="Player" to="." method="_on_player_drone_died"]
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="scored" from="Player" to="." method="_on_player_scored"]
 [connection signal="shots_fired" from="Player" to="." method="_on_shots_fired"]
-[connection signal="died" from="CircularEnemy" to="." method="_on_enemy_died"]
-[connection signal="hurt" from="CircularEnemy" to="." method="_on_enemy_hurt"]
-[connection signal="shots_fired" from="CircularEnemy" to="." method="_on_shots_fired"]
-[connection signal="died" from="CircularEnemy2" to="." method="_on_enemy_died"]
-[connection signal="hurt" from="CircularEnemy2" to="." method="_on_enemy_hurt"]
-[connection signal="shots_fired" from="CircularEnemy2" to="." method="_on_shots_fired"]
-[connection signal="died" from="StraightEnemy" to="." method="_on_enemy_died"]
-[connection signal="hurt" from="StraightEnemy" to="." method="_on_enemy_hurt"]
-[connection signal="shots_fired" from="StraightEnemy" to="." method="_on_shots_fired"]
-[connection signal="died" from="RectangularEnemy" to="." method="_on_enemy_died"]
-[connection signal="hurt" from="RectangularEnemy" to="." method="_on_enemy_hurt"]
-[connection signal="shots_fired" from="RectangularEnemy" to="." method="_on_shots_fired"]
-[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="exit_game" from="PauseMenu" to="." method="_on_pause_menu_exit_game"]
+[connection signal="resume_game" from="PauseMenu" to="." method="_on_pause_menu_resume_game"]

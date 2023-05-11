@@ -25,6 +25,7 @@ var angle: float = 0
 func _ready() -> void:
 	center = position
 	shoot_timer.wait_time = randf_range(min_shot_interval, max_shot_interval)
+	_activate()
 
 
 func _process(delta) -> void:
@@ -64,11 +65,11 @@ func _on_hurtbox_body_entered(body):
 		health -= 1
 		if health <= 0:
 			died.emit()
-			queue_free()
+			_deactivate()
 
 
 func _on_player_died():
-	queue_free()
+	_deactivate()
 
 
 func _on_shoot_timer_timeout():
@@ -76,4 +77,13 @@ func _on_shoot_timer_timeout():
 
 
 func _on_despawn_timer_timeout():
+	_deactivate()
+
+
+func _activate() -> void:
+	Globals.drone_status.emit(true)
+
+	
+func _deactivate() -> void:
+	Globals.drone_status.emit(false)
 	queue_free()

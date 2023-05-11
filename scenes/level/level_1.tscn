@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfppke4ifcwab"]
+
+[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
+[ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
+[ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
+[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
+
+[sub_resource type="Animation" id="Animation_dsvh2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-200, -500)]
+}
+
+[sub_resource type="Animation" id="Animation_tkxat"]
+resource_name = "patrol"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, -500), Vector2(200, -500)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hu6fx"]
+_data = {
+"RESET": SubResource("Animation_dsvh2"),
+"patrol": SubResource("Animation_tkxat")
+}
+
+[node name="Level1" instance=ExtResource("1_rl17j")]
+
+[node name="Background" parent="." index="0"]
+position = Vector2(640, -1033)
+
+[node name="CircularEnemy" parent="." index="1" instance=ExtResource("2_48crl")]
+position = Vector2(591, -392)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy" index="7"]
+script = ExtResource("3_anepg")
+offset = Vector2(-200, -500)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CircularEnemy/FollowPlayerBehaviour" index="0"]
+autoplay = "patrol"
+libraries = {
+"": SubResource("AnimationLibrary_hu6fx")
+}
+
+[node name="CircularEnemy2" parent="." index="2" instance=ExtResource("2_48crl")]
+position = Vector2(1016, -146)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy2" index="7"]
+script = ExtResource("3_anepg")
+
+[node name="StraightEnemy" parent="." index="3" instance=ExtResource("5_8rx0d")]
+position = Vector2(853, 137)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy" index="9"]
+script = ExtResource("3_anepg")
+
+[node name="RectangularEnemy" parent="." index="4" instance=ExtResource("6_dyy6o")]
+position = Vector2(595, -839)
+speed = 100
+
+[node name="FollowPlayerBehaviour" type="Node" parent="RectangularEnemy" index="7"]
+script = ExtResource("3_anepg")
+
+[node name="CircularEnemy3" parent="." index="5" instance=ExtResource("2_48crl")]
+position = Vector2(265, -473)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy3" index="7"]
+script = ExtResource("3_anepg")

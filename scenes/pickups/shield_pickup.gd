@@ -11,7 +11,8 @@ func pickup(player: Player) -> void:
 		# player already has a shield
 		return
 	
-	var shield = shield_scene.instantiate()
-	player.add_child(shield)
-	player.move_child(shield, 0)
+	var shield = shield_scene.instantiate() as Shield
+	player.died.connect(shield._on_player_died)
 	
+	player.call_deferred("add_child", shield)
+	player.call_deferred("move_child", shield, 0)

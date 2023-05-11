@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg2b7v1iv7v8v"]
+[gd_scene load_steps=7 format=3 uid="uid://dg2b7v1iv7v8v"]
 
 [ext_resource type="Texture2D" uid="uid://cpn418mf3xh1w" path="res://assets/graphics/pickup_health.svg" id="1_70n2t"]
 [ext_resource type="Script" path="res://scenes/pickups/pickup.gd" id="1_862r2"]
-[ext_resource type="AudioStream" uid="uid://bnj0a82c6k88i" path="res://assets/sfxr/pickup.sfxr" id="3_erpo6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16du0"]
 radius = 8.0
@@ -46,7 +45,7 @@ _data = {
 "hover": SubResource("Animation_wnog8")
 }
 
-[node name="Pickup" type="RigidBody2D"]
+[node name="Pickup" type="RigidBody2D" groups=["Pickup"]]
 collision_layer = 16
 collision_mask = 0
 can_sleep = false
@@ -58,9 +57,6 @@ shape = SubResource("CapsuleShape2D_16du0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_70n2t")
-
-[node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_erpo6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

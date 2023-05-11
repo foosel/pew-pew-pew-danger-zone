@@ -20,6 +20,7 @@ var health: int = FULL_HEALTH
 var last_shot: float = 0
 var bullet_emitters: Array[PlayerBulletEmitter] = []
 
+@onready var pickup_pull = $PickupPull as Area2D
 @onready var shot_sfx = $ShotSFX as AudioStreamPlayer
 @onready var hurt_sfx = $HurtSFX as AudioStreamPlayer
 @onready var pickup_sfx = $PickupSFX as AudioStreamPlayer
@@ -82,10 +83,11 @@ func hit() -> void:
 		animation_player.play("hurt")
 		
 
-func respawn(pos: Vector2) -> void:
-	health = FULL_HEALTH
-	position = pos
-	animation_player.play("respawned")
+func respawn(pos: Vector2, heal: bool = true) -> void:
+	if heal:
+		health = FULL_HEALTH
+		animation_player.play("respawned")
+	global_position = pos
 	
 	
 func add_health(amount: int) -> void:

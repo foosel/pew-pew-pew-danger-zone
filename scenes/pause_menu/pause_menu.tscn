@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvogerkbh32v8"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu/pause_menu.gd" id="1_68rpm"]
+[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="1_djg3c"]
+
+[node name="PauseMenu" type="PopupPanel"]
+process_mode = 2
+size = Vector2i(640, 236)
+visible = true
+min_size = Vector2i(640, 0)
+theme = ExtResource("1_djg3c")
+script = ExtResource("1_68rpm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 232.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Exit")
+text = "Continue"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_next = NodePath("../Continue")
+focus_previous = NodePath("../Continue")
+text = "Exit to menu"
+
+[connection signal="about_to_popup" from="." to="." method="_on_about_to_popup"]
+[connection signal="popup_hide" from="." to="." method="_on_popup_hide"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,131 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0jxdmnqivvfu"]
+
+[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="1_1kruj"]
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_1x5ao"]
+[ext_resource type="Texture2D" uid="uid://bgjqeuoxx8eru" path="res://assets/graphics/menu_background.png" id="2_tj7au"]
+[ext_resource type="Texture2D" uid="uid://ctek363x3ioqa" path="res://assets/graphics/menu_foreground.png" id="3_kim82"]
+[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="4_2ui0k"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1kruj")
+script = ExtResource("2_1x5ao")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tj7au")
+
+[node name="Foreground" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_kim82")
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Highscore" type="Label" parent="Main"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_2ui0k")
+text = "High Score: "
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="Help" type="Label" parent="Main/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "Lose health, gain bullets! Shoot or get shot! Collect powerups! Beat the highscore!"
+horizontal_alignment = 2
+autowrap_mode = 3
+
+[node name="New Game" type="Button" parent="Main/HBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Credits" type="Button" parent="Main/HBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Main/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -640.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Label" type="Label" parent="Credits/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "A game by Gina \"foosel\" Häußge
+created for #GoGodotJam4 
+using Godot Engine 4
+
+Programming, Graphics & Sound Effects:
+Gina Häußge
+
+Music: 
+DavidKBD
+
+Fonts: 
+JetBrainsMono by JetBrains
+DIGITAL-7 by Sizenko Alexander"
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="Credits/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="Main/HBoxContainer/New Game" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main/HBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Main/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Credits/MarginContainer/Back" to="." method="_on_back_pressed"]

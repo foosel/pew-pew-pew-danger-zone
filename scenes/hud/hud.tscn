@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvxey18okvxek"]
+[gd_scene load_steps=7 format=3 uid="uid://bvxey18okvxek"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_vdakb"]
 [ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/empty_bar.svg" id="2_7h0kc"]
-[ext_resource type="Texture2D" uid="uid://b00wnffb0m68k" path="res://assets/graphics/player.svg" id="2_eiavf"]
+[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="2_24nue"]
+[ext_resource type="Texture2D" uid="uid://d2mvrn0e6bto5" path="res://assets/graphics/lives_bar.svg" id="3_i64v2"]
 [ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/health_bar.svg" id="3_u2q4l"]
 [ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/bullet_bar.svg" id="4_nna8r"]
 
@@ -24,6 +25,8 @@ theme_override_constants/margin_bottom = 0
 
 [node name="ScoreLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 horizontal_alignment = 1
 
@@ -46,20 +49,13 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LeftBar/MarginContainer"]
+[node name="LifeBar" type="TextureProgressBar" parent="LeftBar/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-
-[node name="LifeSymbol" type="TextureRect" parent="LeftBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_eiavf")
-stretch_mode = 2
-
-[node name="LifeCount" type="Label" parent="LeftBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-text = "x 3"
+max_value = 3.0
+value = 3.0
+fill_mode = 1
+texture_progress = ExtResource("3_i64v2")
 
 [node name="HealthBar" type="TextureProgressBar" parent="LeftBar/MarginContainer"]
 layout_mode = 2
@@ -93,7 +89,10 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="BulletBar" type="TextureProgressBar" parent="RightBar/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RightBar/MarginContainer"]
+layout_mode = 2
+
+[node name="BulletBar" type="TextureProgressBar" parent="RightBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -103,8 +102,40 @@ fill_mode = 3
 texture_under = ExtResource("2_7h0kc")
 texture_progress = ExtResource("4_nna8r")
 
-[node name="FPSLabel" type="Label" parent="RightBar/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="RightBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ShieldLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
+text = "Shield"
+
+[node name="DroneLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
+text = "Drone"
+
+[node name="BombLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
+text = "Bomb (Shift)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RightBar/MarginContainer"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="RightBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
 text = "FPS"
