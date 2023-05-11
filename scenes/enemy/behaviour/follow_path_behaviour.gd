@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process_behaviour(_delta) -> void:
 	var target = path_points[path_index]
-	var position = enemy.position
+	var position = enemy.global_position
 	if position.distance_to(target) < 1:
 		path_index = wrapi(path_index + 1, 0, path_points.size())
 		target = path_points[path_index]
@@ -25,6 +25,8 @@ func _physics_process_behaviour(_delta) -> void:
 	var difference = target - position
 	var distance = difference.length()
 	var direction = difference.normalized()
-	enemy.velocity = direction * min(distance, enemy.speed)
+	var velocity = direction * min(distance, enemy.speed)
+	
+	enemy.velocity = velocity
 	enemy.move_and_slide()
 	

@@ -35,5 +35,5 @@ func get_target() -> Node2D:
 	return null
 
 
-func emit_shots(shots: Array) -> void:
+func emit_shots(_shots: Array) -> void:
 	pass

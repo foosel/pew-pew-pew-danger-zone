@@ -19,6 +19,5 @@ func get_target() -> Node2D:
 	return closest_enemy
 	
 
-func emit_shots(shots: Array) -> void:
-	#(owner as Player).shoot(shots)
+func emit_shots(_shots: Array) -> void:
 	pass

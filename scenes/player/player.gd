@@ -12,6 +12,8 @@ signal shots_fired(shots: Array)
 signal healed()
 signal hurt()
 signal died()
+signal bomb_exploded(bomb: Bomb)
+signal drone_died(drone: Drone)
 signal scored(amount: int)
 
 var health: int = FULL_HEALTH
@@ -65,55 +67,6 @@ func shoot():
 	
 	shots_fired.emit(shots)
 	shot_sfx.play()
-	
-#	var direction = Vector2.UP * bullet_speed
-#
-#	# spawn bullet in the middle
-#	if health == 5 or health == 1:
-#		shots.append({
-#			"position": position + Vector2(0, -16), 
-#			"velocity": direction
-#		})
-#
-#	# spawn two bullets in the middle
-#	if health <= 4: 
-#		shots.append({
-#			"position": position + Vector2(-10, -10), 
-#			"velocity": direction
-#		})
-#		shots.append({
-#			"position": position + Vector2(10, -10), 
-#			"velocity": direction
-#		})
-#
-#	# spawn two bullets on the wings
-#	if health <= 3:
-#		shots.append({
-#			"position": position + Vector2(-12, 0), 
-#			"velocity": direction.rotated(deg_to_rad(-side_shot_angle)),
-#			"rotated": true
-#		})
-#		shots.append({
-#			"position": position + Vector2(12, 0), 
-#			"velocity": direction.rotated(deg_to_rad(side_shot_angle)),
-#			"rotated": true
-#		})
-#
-#	# spawn two more bullets on the wings
-#	if health <= 2:
-#		shots.append({
-#			"position": position + Vector2(-12, 0), 
-#			"velocity": direction.rotated(deg_to_rad(- 2 * side_shot_angle)),
-#			"rotated": true
-#		})
-#		shots.append({
-#			"position": position + Vector2(12, 0), 
-#			"velocity": direction.rotated(deg_to_rad(2 * side_shot_angle)),
-#			"rotated": true
-#		})
-#
-#	shots_fired.emit(bullet_scene, shots, null)
-
 
 
 func hit() -> void:
@@ -156,4 +109,11 @@ func _on_pickuparea_body_entered(body):
 	assert(body is Pickup)
 	pickup_sfx.play()
 	(body as Pickup).pickup(self)
-	
+
+
+func _on_drone_died(drone: Drone):
+	drone_died.emit(drone)
+
+
+func _on_bomb_exploded(bomb: Bomb):
+	bomb_exploded.emit(bomb)

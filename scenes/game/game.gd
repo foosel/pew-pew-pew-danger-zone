@@ -55,11 +55,6 @@ func _on_player_died():
 	hud.set_lives(lives)
 
 
-func _on_drone_died(drone: Drone):
-	_add_explosion(drone.position)
-	camera.add_trauma(1)
-
-
 func _on_respawn_timer_timeout():
 	var respawn_position = Vector2(
 		Globals.visible_viewport.position.x + Globals.visible_viewport.size.x / 2, 
@@ -79,9 +74,14 @@ func _on_player_scored(amount):
 	hud.set_score(score)
 
 
-func _add_explosion(position: Vector2) -> void:
+func _on_player_drone_died(drone):
+	_add_explosion(drone.position)
+	camera.add_trauma(1)
+
+
+func _add_explosion(pos: Vector2) -> void:
 	var explosion = explosion_scene.instantiate()
-	explosion.position = position
+	explosion.position = pos
 	add_child(explosion)
 
 
@@ -94,16 +94,15 @@ func _add_pickup(enemy: Enemy) -> void:
 
 
 func _add_points_pickups(enemy: Enemy, source: String) -> void:
-	var score = enemy.get_score_pickups(source)
+	var amount = enemy.get_score_pickups(source)
 	var spread = 16
 	if source == "died":
 		spread = 64
 
-	for x in range(score):
+	for x in range(amount):
 		var pickup = points_pickup_scene.instantiate()
 		pickup.position = Vector2(
 			enemy.position.x + randi_range(-spread, spread), 
 			enemy.position.y + randi_range(-spread, spread)
 		)
 		call_deferred("add_child", pickup)
-

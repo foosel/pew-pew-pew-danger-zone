@@ -72,7 +72,7 @@ floor_stop_on_slope = false
 script = ExtResource("5_7ft26")
 
 [node name="CircularEnemy" parent="." instance=ExtResource("5_sh2al")]
-position = Vector2(390, 102)
+position = Vector2(591, -392)
 
 [node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy"]
 script = ExtResource("7_1mqfo")
@@ -91,6 +91,7 @@ position = Vector2(904, 26)
 script = ExtResource("7_tgvrs")
 
 [node name="Path2D" type="Path2D" parent="CircularEnemy2/FollowPathBehaviour"]
+visible = false
 curve = SubResource("Curve2D_nhjkl")
 
 [node name="StraightEnemy" parent="." instance=ExtResource("6_p2psb")]
@@ -100,10 +101,8 @@ position = Vector2(853, 137)
 script = ExtResource("7_1mqfo")
 
 [node name="RectangularEnemy" parent="." instance=ExtResource("9_r6a23")]
-position = Vector2(614, 165)
-
-[node name="FollowPlayerBehaviour" type="Node" parent="RectangularEnemy"]
-script = ExtResource("7_1mqfo")
+position = Vector2(595, -839)
+speed = 100
 
 [node name="FocusPoint" type="Node2D" parent="."]
 
@@ -124,6 +123,7 @@ one_shot = true
 stream = ExtResource("12_shdmi")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="drone_died" from="Player" to="." method="_on_player_drone_died"]
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="scored" from="Player" to="." method="_on_player_scored"]
@@ -132,7 +132,12 @@ stream = ExtResource("12_shdmi")
 [connection signal="hurt" from="CircularEnemy" to="." method="_on_enemy_hurt"]
 [connection signal="shots_fired" from="CircularEnemy" to="." method="_on_shots_fired"]
 [connection signal="died" from="CircularEnemy2" to="." method="_on_enemy_died"]
+[connection signal="hurt" from="CircularEnemy2" to="." method="_on_enemy_hurt"]
 [connection signal="shots_fired" from="CircularEnemy2" to="." method="_on_shots_fired"]
 [connection signal="died" from="StraightEnemy" to="." method="_on_enemy_died"]
+[connection signal="hurt" from="StraightEnemy" to="." method="_on_enemy_hurt"]
 [connection signal="shots_fired" from="StraightEnemy" to="." method="_on_shots_fired"]
+[connection signal="died" from="RectangularEnemy" to="." method="_on_enemy_died"]
+[connection signal="hurt" from="RectangularEnemy" to="." method="_on_enemy_hurt"]
+[connection signal="shots_fired" from="RectangularEnemy" to="." method="_on_shots_fired"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

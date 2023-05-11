@@ -1,6 +1,18 @@
 extends RigidBody2D
 class_name Bullet
 
+@export var damage: int = 1
+@export var target: Node2D
+@export var steering: float = 50
+
+
+func _integrate_forces(_state):
+	if not target:
+		return
+	
+	var direction = (target.global_position - global_position).normalized()
+	apply_force(direction * steering)
+
 
 func explode() -> void:
 	queue_free()

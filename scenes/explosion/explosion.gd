@@ -21,7 +21,6 @@ func start() -> void:
 	
 	fire.emitting = true
 	smoke.emitting = true
-	#timer.start()
 
 	sfx.play()
 	await sfx.finished

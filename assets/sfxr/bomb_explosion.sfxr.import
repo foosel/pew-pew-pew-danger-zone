@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://cgm1yolp7elfi"
+path="res://.godot/imported/bomb_explosion.sfxr-53ee59ba15e5473fd71b6b7fbca17e0e.sample"
+
+[deps]
+
+source_file="res://assets/sfxr/bomb_explosion.sfxr"
+dest_files=["res://.godot/imported/bomb_explosion.sfxr-53ee59ba15e5473fd71b6b7fbca17e0e.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

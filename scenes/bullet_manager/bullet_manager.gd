@@ -15,11 +15,21 @@ func spawn_bullets(bullets: Array) -> void:
 			rotated = b["rotated"]
 		else:
 			rotated = false
+			
+		if "steering" in b:
+			steering = b["steering"]
+		else:
+			steering = 0
+		
+		if "target" in b:
+			target = b["target"]
+		else:
+			target = null
 
-		spawn_bullet(b["scene"], b["position"], b["velocity"], rotated)
+		spawn_bullet(b["scene"], b["position"], b["velocity"], rotated, target, steering)
 
 
-func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, rotated: bool = false) -> void:
+func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, rotated: bool = false, target: Node2D = null, steering: float = 0) -> void:
 	var bullet = scene.instantiate() as Bullet
 
 	if rotated:
@@ -28,4 +38,6 @@ func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, rotated: 
 
 	bullet.position = pos
 	bullet.linear_velocity = velocity
+	bullet.target = target
+	bullet.steering = steering
 	add_child(bullet)

@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1n5vj37qe505"]
+
+[ext_resource type="Script" path="res://scenes/pickups/bomb/bomb.gd" id="1_hb0vi"]
+[ext_resource type="Script" path="res://scenes/pickups/drone/drone_area_sprite.gd" id="3_dkpve"]
+[ext_resource type="AudioStream" uid="uid://cgm1yolp7elfi" path="res://assets/sfxr/bomb_explosion.sfxr" id="4_lsdu7"]
+
+[sub_resource type="Animation" id="Animation_rtb6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area:fill_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.239216, 0.239216, 0.239216, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area:line_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.152941, 0.152941, 0.152941, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3cosp"]
+resource_name = "explode"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area:fill_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area:line_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.858824, 0.247059, 0.992157, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3shkf"]
+_data = {
+"RESET": SubResource("Animation_rtb6i"),
+"explode": SubResource("Animation_3cosp")
+}
+
+[node name="Bomb" type="Node2D" groups=["Bomb"]]
+script = ExtResource("1_hb0vi")
+
+[node name="Area" type="Node2D" parent="."]
+script = ExtResource("3_dkpve")
+line_color = Color(0.152941, 0.152941, 0.152941, 1)
+fill_color = Color(0.239216, 0.239216, 0.239216, 0.392157)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3shkf")
+}
+
+[node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lsdu7")

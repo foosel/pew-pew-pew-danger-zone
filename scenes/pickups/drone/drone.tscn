@@ -1,17 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpd6b8yjwve24"]
+[gd_scene load_steps=5 format=3 uid="uid://c1n5vj37qe505"]
 
 [ext_resource type="Script" path="res://scenes/pickups/drone/drone.gd" id="1_enu7v"]
 [ext_resource type="Texture2D" uid="uid://bhde3ienwfwyr" path="res://assets/graphics/drone.svg" id="1_oa5md"]
-[ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="3_v6d5x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sv0j4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kskmo"]
+radius = 18.0278
 
 [node name="Drone" type="CharacterBody2D" groups=["Drone"]]
-collision_layer = 2
-collision_mask = 4
 script = ExtResource("1_enu7v")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_oa5md")
@@ -24,13 +29,5 @@ shape = SubResource("CircleShape2D_sv0j4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_kskmo")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
-[node name="CircularBulletPattern" parent="." instance=ExtResource("3_v6d5x")]
-distance = 24
-speed = 500.0
-
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

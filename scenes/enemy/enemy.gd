@@ -14,13 +14,15 @@ var pickups = [
 	null,
 	load("res://scenes/pickups/health_pickup.tscn"),
 	load("res://scenes/pickups/shield_pickup.tscn"),
-	load("res://scenes/pickups/drone_pickup.tscn")
+	load("res://scenes/pickups/drone_pickup.tscn"),
+	load("res://scenes/pickups/bomb_pickup.tscn")
 ]
 var pickup_weights = [
-	1.0, # nothing
+	0.5, # nothing
 	1.0, # health
 	1.0, # shield
-	10.0  # drone
+	1.0, # drone
+	1.0 # bomb
 ]
 
 var total_pickup_weight = 0.0
@@ -32,28 +34,26 @@ signal died(enemy: Enemy)
 
 
 var behaviours = []
+var active = false
 
 
 func _ready() -> void:
 	for child in get_children():
 		if child is Behaviour:
 			behaviours.append(child as Behaviour)
-	velocity = Vector2.UP * Globals.scroll_speed
 	
-#	assert(pickups.size() == pickup_weights.size())
+#	assert(pickups.size() == pickup_weights.size()) wd
 	for weight in pickup_weights:
-		print(weight)
 		total_pickup_weight += weight
 		weighted_pickups.append(total_pickup_weight)
-	print(total_pickup_weight)
 
 
 func shoot(shots: Array) -> void:
 	shots_fired.emit(shots)
 
 
-func hit() -> void:
-	health -= 1
+func hit(damage: int) -> void:
+	health -= damage
 
 	if health <= 0:
 		died.emit(self)
@@ -72,24 +72,28 @@ func get_pickup() -> PackedScene:
 
 func get_score_pickups(source: String) -> int:
 	if source == "hurt":
-		return min_score_pickups
+		return 1
 	return randi_range(min_score_pickups, max_score_pickups)
 
 
 func _physics_process(delta):
-	for behaviour in behaviours:
-		behaviour._physics_process_behaviour(delta)
+	if active:
+		for behaviour in behaviours:
+			behaviour._physics_process_behaviour(delta)
 
 
 func _on_hurtbox_body_entered(body):
 	if body is Bullet:
-		(body as Bullet).explode()
-		hit()
+		var bullet = body as Bullet
+		bullet.explode()
+		hit(bullet.damage)
 	elif body is Player:
-		hit()
+		hit(1)
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
+	print("Enemy " + str(self) + " entered visible screen")
+	active = true
 	if despawn_timer:
 		despawn_timer.stop()
 
