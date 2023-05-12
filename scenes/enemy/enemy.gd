@@ -53,6 +53,9 @@ func shoot(shots: Array) -> void:
 
 
 func hit(damage: int) -> void:
+	if health <= 0:
+		return # make sure we no longer process this on an already dead enemy
+
 	health -= damage
 
 	if health <= 0:
