@@ -10,26 +10,6 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vdakb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -62.5
-offset_right = 62.5
-offset_bottom = 90.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 0
-theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 0
-
-[node name="ScoreLabel" type="Label" parent="MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_24nue")
-theme_override_font_sizes/font_size = 32
-text = "Score: 0"
-horizontal_alignment = 1
-
 [node name="LeftBar" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(252, 0)
 anchors_preset = 9
@@ -132,7 +112,16 @@ text = "Bomb (Shift)"
 [node name="VBoxContainer" type="VBoxContainer" parent="RightBar/MarginContainer"]
 layout_mode = 2
 
+[node name="ScoreLabel" type="Label" parent="RightBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+
 [node name="FPSLabel" type="Label" parent="RightBar/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

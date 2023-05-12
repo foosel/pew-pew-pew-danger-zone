@@ -1,47 +1,72 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfppke4ifcwab"]
+[gd_scene load_steps=10 format=3 uid="uid://cfppke4ifcwab"]
 
 [ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
 [ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
 [ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="Script" path="res://scenes/enemy/behaviour/straight_movement.gd" id="5_m3esb"]
 [ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
 
-[sub_resource type="Animation" id="Animation_dsvh2"]
+[sub_resource type="Animation" id="Animation_ai64q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
+tracks/0/path = NodePath("Node:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-200, -500)]
+"values": [Vector2(-64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_tkxat"]
+[sub_resource type="Animation" id="Animation_gxq7f"]
 resource_name = "patrol"
-length = 5.0
-loop_mode = 2
+length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:offset")
+tracks/0/path = NodePath("Node:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(-200, -500), Vector2(200, -500)]
+"values": [Vector2(-64, 0), Vector2(64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(64, 0), Vector2(-64, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hu6fx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1u71"]
 _data = {
-"RESET": SubResource("Animation_dsvh2"),
-"patrol": SubResource("Animation_tkxat")
+"RESET": SubResource("Animation_ai64q"),
+"patrol": SubResource("Animation_gxq7f")
 }
 
 [node name="Level1" instance=ExtResource("1_rl17j")]
@@ -49,40 +74,109 @@ _data = {
 [node name="Background" parent="." index="0"]
 position = Vector2(640, -1033)
 
-[node name="CircularEnemy" parent="." index="1" instance=ExtResource("2_48crl")]
-position = Vector2(591, -392)
+[node name="Exit" parent="Background" index="0"]
+position = Vector2(0, 424)
 
-[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy" index="7"]
-script = ExtResource("3_anepg")
-offset = Vector2(-200, -500)
+[node name="CollisionShape2D" parent="Background/Exit" index="0"]
+position = Vector2(7, -1970)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CircularEnemy/FollowPlayerBehaviour" index="0"]
-autoplay = "patrol"
-libraries = {
-"": SubResource("AnimationLibrary_hu6fx")
-}
-
-[node name="CircularEnemy2" parent="." index="2" instance=ExtResource("2_48crl")]
-position = Vector2(1016, -146)
-
-[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy2" index="7"]
-script = ExtResource("3_anepg")
-
-[node name="StraightEnemy" parent="." index="3" instance=ExtResource("5_8rx0d")]
-position = Vector2(853, 137)
+[node name="StraightEnemy" parent="." index="1" instance=ExtResource("5_8rx0d")]
+position = Vector2(640, -128)
+activation_offset = -128
 
 [node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy" index="9"]
 script = ExtResource("3_anepg")
 
+[node name="CircularEnemy3" parent="." index="2" instance=ExtResource("2_48crl")]
+position = Vector2(224, -305)
+speed = 150
+
+[node name="StraightMovementBehaviour" type="Node" parent="CircularEnemy3" index="7"]
+script = ExtResource("5_m3esb")
+angle = 45.0
+
+[node name="CircularEnemy4" parent="." index="3" instance=ExtResource("2_48crl")]
+position = Vector2(1056, -305)
+speed = 150
+
+[node name="StraightMovementBehaviour" type="Node" parent="CircularEnemy4" index="7"]
+script = ExtResource("5_m3esb")
+angle = 135.0
+scroll_along = false
+
 [node name="RectangularEnemy" parent="." index="4" instance=ExtResource("6_dyy6o")]
-position = Vector2(595, -839)
+position = Vector2(419, -471)
 speed = 100
 
-[node name="FollowPlayerBehaviour" type="Node" parent="RectangularEnemy" index="7"]
+[node name="RectangularEnemy2" parent="." index="5" instance=ExtResource("6_dyy6o")]
+position = Vector2(853, -471)
+speed = 100
+
+[node name="StraightEnemy2" parent="." index="6" instance=ExtResource("5_8rx0d")]
+position = Vector2(640, -531)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy2" index="9"]
 script = ExtResource("3_anepg")
 
-[node name="CircularEnemy3" parent="." index="5" instance=ExtResource("2_48crl")]
-position = Vector2(265, -473)
+[node name="CircularEnemy2" parent="." index="7" instance=ExtResource("2_48crl")]
+position = Vector2(640, -997)
 
-[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy3" index="7"]
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy2" index="7"]
+script = ExtResource("3_anepg")
+
+[node name="Node2D" type="Node2D" parent="." index="8"]
+
+[node name="Node" type="Node2D" parent="Node2D" index="0"]
+position = Vector2(-64, 0)
+
+[node name="RectangularEnemy3" parent="Node2D/Node" index="0" instance=ExtResource("6_dyy6o")]
+position = Vector2(390, -1281)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy4" parent="Node2D/Node" index="1" instance=ExtResource("6_dyy6o")]
+position = Vector2(903, -1281)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy5" parent="Node2D/Node" index="2" instance=ExtResource("6_dyy6o")]
+position = Vector2(653, -1281)
+speed = 100
+activation_offset = -32
+
+[node name="Node2" type="Node2D" parent="Node2D" index="1"]
+
+[node name="RectangularEnemy6" parent="Node2D/Node2" index="0" instance=ExtResource("6_dyy6o")]
+position = Vector2(390, -1632)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy7" parent="Node2D/Node2" index="1" instance=ExtResource("6_dyy6o")]
+position = Vector2(903, -1632)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy8" parent="Node2D/Node2" index="2" instance=ExtResource("6_dyy6o")]
+position = Vector2(653, -1632)
+speed = 100
+activation_offset = -32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" index="2"]
+autoplay = "patrol"
+libraries = {
+"": SubResource("AnimationLibrary_u1u71")
+}
+
+[node name="StraightEnemy3" parent="." index="9" instance=ExtResource("5_8rx0d")]
+position = Vector2(813, -2484)
+activation_offset = -128
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy3" index="9"]
+script = ExtResource("3_anepg")
+
+[node name="StraightEnemy4" parent="." index="10" instance=ExtResource("5_8rx0d")]
+position = Vector2(524, -2041)
+activation_offset = -128
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy4" index="9"]
 script = ExtResource("3_anepg")

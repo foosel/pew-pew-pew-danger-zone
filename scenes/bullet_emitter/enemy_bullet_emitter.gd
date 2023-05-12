@@ -4,31 +4,22 @@ class_name EnemyBulletEmitter
 @export var firing_interval = 0.5
 @export var firing_delay = 0.0
 
+@onready var timer = $Timer as Timer
+
 var armed = false
-var timer
 
 
 func start() -> void:
-	if timer:
-		return
-
-	timer = Timer.new()
-	timer.set_one_shot(false)
-	timer.timeout.connect(_on_timer_timeout)
-	add_child(timer)
-
 	if firing_delay:
 		timer.set_wait_time(firing_delay)
 	else:
 		armed = true
 		timer.set_wait_time(firing_interval)
-
 	timer.start()
 
 
 func stop() -> void:
 	timer.stop()
-	remove_child(timer)
 
 
 func get_target() -> Node2D:

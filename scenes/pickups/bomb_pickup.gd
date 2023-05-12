@@ -2,12 +2,15 @@ extends Pickup
 
 var bomb_scene = load("res://scenes/pickups/bomb/bomb.tscn")
 
+@export var replacement_points = 25
+
 
 func pickup(player: Player) -> void:
 	super.pickup(player)
 
 	if player.get_tree().get_first_node_in_group("Bomb"):
-		# player already has a bomb
+		# player already has a bomb, at least give them some points
+		player.add_points(replacement_points)
 		return
 	
 	var bomb = bomb_scene.instantiate() as Bomb

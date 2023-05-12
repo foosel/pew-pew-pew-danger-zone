@@ -21,6 +21,7 @@ position = Vector2(0, 16)
 
 [node name="StraightBulletPattern" parent="EnemyBulletEmitterFront" index="1" instance=ExtResource("3_cufwe")]
 visible = false
+speed = 400.0
 
 [node name="EnemyBulletEmitterLeft" parent="." index="4" instance=ExtResource("3_84seb")]
 position = Vector2(-16, -16)
@@ -28,6 +29,7 @@ firing_interval = 1.0
 
 [node name="StraightBulletPattern" parent="EnemyBulletEmitterLeft" index="1" instance=ExtResource("3_cufwe")]
 visible = false
+speed = 400.0
 
 [node name="EnemyBulletEmitterRight" parent="." index="5" instance=ExtResource("3_84seb")]
 position = Vector2(16, -16)
@@ -35,6 +37,7 @@ firing_interval = 1.0
 
 [node name="StraightBulletPattern" parent="EnemyBulletEmitterRight" index="1" instance=ExtResource("3_cufwe")]
 visible = false
+speed = 400.0
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_ixedp")

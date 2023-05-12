@@ -1,11 +1,17 @@
 extends Area2D
 class_name Shield
 
-@export var health = 10
+@export var full_health = 10
 
+@onready var health = full_health
 @onready var shield_sfx = $ShieldSFX as AudioStreamPlayer
 
 ## TODO: deflect bullets instead of "eating" them?
+
+
+func reset_health() -> void:
+	health = full_health
+
 
 func _ready() -> void:
 	shield_sfx.play()

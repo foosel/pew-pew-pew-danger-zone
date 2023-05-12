@@ -16,6 +16,7 @@ signal died()
 
 
 @onready var shoot_timer = $ShootTimer as Timer
+@onready var despawn_timer = $DespawnTimer as Timer
 
 
 var center: Vector2
@@ -39,6 +40,10 @@ func shoot() -> void:
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		if not enemy is Enemy:
 			continue
+
+		if not Globals.in_visible_viewport(enemy.global_position):
+			continue
+
 		var distance = (enemy.global_position - global_position).length()
 		if closest_distance < 0 or distance < closest_distance:
 			closest_distance = distance
@@ -57,6 +62,10 @@ func shoot() -> void:
 		"rotated": true,
 	}	
 	player.shots_fired.emit([shot])
+
+
+func reset_timeout() -> void:
+	despawn_timer.start()
 
 
 func _on_hurtbox_body_entered(body):

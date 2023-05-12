@@ -107,7 +107,6 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_ypgd0")
-bullet_fire_interval = 0.2
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.25098)
@@ -166,7 +165,7 @@ libraries = {
 
 [node name="PlayerBulletEmitterFront" parent="." instance=ExtResource("6_fttdy")]
 position = Vector2(0, -23)
-active_during = Array[int]([5, 4, 3, 2])
+active_during = Array[int]([5, 4, 3, 2, 1])
 
 [node name="StraightBulletPattern" parent="PlayerBulletEmitterFront" instance=ExtResource("7_hw6b1")]
 visible = false
@@ -225,24 +224,6 @@ active_during = Array[int]([2, 1])
 [node name="StraightBulletPattern" parent="PlayerBulletEmitter20Right" instance=ExtResource("7_hw6b1")]
 visible = false
 angle = 20.0
-speed = 750.0
-
-[node name="PlayerBulletEmitterFrontLeft" parent="." instance=ExtResource("6_fttdy")]
-position = Vector2(-5, -23)
-active_during = Array[int]([1])
-
-[node name="StraightBulletPattern" parent="PlayerBulletEmitterFrontLeft" instance=ExtResource("7_hw6b1")]
-visible = false
-angle = 0.0
-speed = 750.0
-
-[node name="PlayerBulletEmitterFrontRight" parent="." instance=ExtResource("6_fttdy")]
-position = Vector2(5, -23)
-active_during = Array[int]([1])
-
-[node name="StraightBulletPattern" parent="PlayerBulletEmitterFrontRight" instance=ExtResource("7_hw6b1")]
-visible = false
-angle = 0.0
 speed = 750.0
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

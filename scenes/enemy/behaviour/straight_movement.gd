@@ -6,7 +6,7 @@ class_name StraightMovementBehaviour
 @export var scroll_along: bool = true
 
 
-func _physics_process(delta):
+func _physics_process_behaviour(delta):
 	var direction = Vector2.RIGHT.rotated(deg_to_rad(angle))
 	enemy.velocity = direction * enemy.speed
 	if scroll_along:

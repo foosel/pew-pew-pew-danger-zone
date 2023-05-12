@@ -49,6 +49,16 @@ func _calculate_visible_viewport() -> void:
 	visible_viewport.size.y = viewport_size.y
 
 
+func in_visible_viewport(pos: Vector2) -> bool:
+	return visible_viewport.has_point(pos)
+	
+
+func in_visible_viewport_y(pos: Vector2) -> bool:
+	var min_y = visible_viewport.position.y
+	var max_y = min_y + visible_viewport.size.y
+	return pos.y >= min_y and pos.y <= max_y
+
+
 func load_save_game() -> void:
 	if not FileAccess.file_exists(save_game_path):
 		print("No save game yet")

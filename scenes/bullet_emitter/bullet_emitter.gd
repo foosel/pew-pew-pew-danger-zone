@@ -19,7 +19,7 @@ func shoot() -> Array:
 	if not bullet_pattern:
 		return []
 	
-	var shots = bullet_pattern.generate_shots(owner.position + position)
+	var shots = bullet_pattern.generate_shots(global_position)
 	if shots:
 		for shot in shots:
 			shot["scene"] = bullet_scene

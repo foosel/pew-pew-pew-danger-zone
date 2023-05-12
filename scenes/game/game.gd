@@ -15,7 +15,7 @@ class_name Game
 @onready var points_pickup_scene = load("res://scenes/pickups/points_pickup.tscn") as PackedScene
 
 var score = 0
-var lives = 1
+var lives = 3
 
 var current_level = 0
 var levels = [
@@ -67,15 +67,21 @@ func _on_enemy_hurt(enemy: Enemy):
 
 
 func _on_enemy_died(enemy: Enemy):
+	print("Enemy " + str(enemy) + " destroyed")
 	_add_points_pickups(enemy, "died")
 	_add_pickup(enemy)
-	_add_explosion(enemy.position)
+	_add_explosion(enemy.global_position)
 
 	camera.add_trauma(5)
 	score += enemy.score
 	hud.set_score(score)
 	
-	check_level_done()
+	call_deferred("check_level_done")
+
+
+func _on_enemy_despawned(enemy: Enemy):
+	print("Enemy " + str(enemy) + " despawned")
+	call_deferred("check_level_done")
  
 
 func _on_player_hurt():
@@ -118,7 +124,7 @@ func _on_player_drone_died(drone):
 
 
 func _on_level_player_reached_exit():
-	print("Level exit reached")
+	print("Level exit reached (Area)")
 	level_exit_reached = true
 	check_level_done()
 
@@ -143,7 +149,7 @@ func _add_pickup(enemy: Enemy) -> void:
 	var pickup_scene = enemy.get_pickup()
 	if pickup_scene:
 		var pickup = pickup_scene.instantiate()
-		pickup.position = enemy.position + Vector2(randf_range(-10, +10), randf_range(-10, +10))
+		pickup.position = enemy.global_position + Vector2(randf_range(-10, +10), randf_range(-10, +10))
 		call_deferred("add_child", pickup)
 
 
@@ -156,8 +162,8 @@ func _add_points_pickups(enemy: Enemy, source: String) -> void:
 	for x in range(amount):
 		var pickup = points_pickup_scene.instantiate()
 		pickup.position = Vector2(
-			enemy.position.x + randi_range(-spread, spread), 
-			enemy.position.y + randi_range(-spread, spread)
+			enemy.global_position.x + randi_range(-spread, spread), 
+			enemy.global_position.y + randi_range(-spread, spread)
 		)
 		call_deferred("add_child", pickup)
 
@@ -201,16 +207,17 @@ func load_level(index = 0) -> void:
 
 
 func unload_level() -> void:
-	if has_node("Level"):
-		var level = get_node("Level")
-		remove_child(level)
-		level.call_deferred("free")
+	if not level:
+		return
+	remove_child(level)
+	level.call_deferred("free")
 	
 
 func connect_enemies(enemies: Array[Enemy]) -> void:
 	for enemy in enemies:
 		enemy.hurt.connect(_on_enemy_hurt)
 		enemy.died.connect(_on_enemy_died)
+		enemy.despawned.connect(_on_enemy_despawned)
 		enemy.shots_fired.connect(_on_shots_fired)
 
 
@@ -226,7 +233,7 @@ func respawn_player(heal: bool = true) -> void:
 	)
 	player.respawn(respawn_position, heal)
 	hud.set_health(player.health)
-	if not get_node("Player"):
+	if not has_node("Player"):
 		add_child(player)
 
 
@@ -237,15 +244,26 @@ func sync_hud() -> void:
 
 
 func check_level_done() -> void:
-	var enemies = level.get_enemies() 
-	if level_exit_reached and enemies.size() == 0:
-		is_level_complete = true
-		
-		if current_level < levels.size() - 1:
-			stage_clear.show()
-			stage_clear.display(score, current_level + 1)
-		else:
-			call_deferred("load_level", current_level + 1)
+	if not level_exit_reached:
+		return
+	if level.get_enemies().size() > 0:
+		return
+	
+	is_level_complete = "true"
+	
+	for node in get_tree().get_nodes_in_group("Pickup"):
+		if not node is Pickup:
+			continue
+		if not Globals.in_visible_viewport(node.position):
+			continue
+		player.pickup(node as Pickup)
+	
+	if current_level < levels.size() - 1:
+		stage_clear.show()
+		stage_clear.display(score, current_level + 1)
+	else:
+		call_deferred("load_level", current_level + 1)
+
 
 func trigger_game_over(won: bool) -> void:
 	var is_highscore = score > Globals.high_score

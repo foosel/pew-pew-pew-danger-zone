@@ -26,5 +26,3 @@ visible = false
 segments = 6
 distance = 32
 offset_angle_per_firing = 30
-speed = 200.0
-steering = 50.0

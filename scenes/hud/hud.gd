@@ -6,12 +6,12 @@ class_name HUD
 @onready var bullet_bar = $RightBar/MarginContainer/HBoxContainer/BulletBar as TextureProgressBar
 @onready var life_bar = $LeftBar/MarginContainer/LifeBar as TextureProgressBar
 
+@onready var score_label = $RightBar/MarginContainer/VBoxContainer/ScoreLabel as Label
 @onready var fps_label = $RightBar/MarginContainer/VBoxContainer/FPSLabel as Label
 @onready var shield_label = $RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/ShieldLabel as Label
 @onready var drone_label = $RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/DroneLabel as Label
 @onready var bomb_label = $RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/BombLabel as Label
 
-@onready var score_label = $MarginContainer/ScoreLabel as Label
 
 
 var active_color = Color("#ffffff")
