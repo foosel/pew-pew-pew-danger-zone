@@ -9,7 +9,7 @@ class_name GameOver
 @onready var animation = $AnimationPlayer as AnimationPlayer
 
 
-func display(score: int, highscore: bool, won: bool, shots_fired: int, shots_taken: int, enemies_killed: int) -> void:
+func display(score: int, highscore: bool, won: bool, shots_fired: int, enemies_killed: int) -> void:
 	Globals.game_over_showing = true
 	if won:
 		text.text = "You have finished the game!"

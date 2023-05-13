@@ -9,7 +9,34 @@
 [ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="7_2r67m"]
 [ext_resource type="Texture2D" uid="uid://b77w242v0xrue" path="res://assets/graphics/boss_bar_empty.svg" id="7_l8cnc"]
 [ext_resource type="Texture2D" uid="uid://q3rdi2qi66ws" path="res://assets/graphics/boss_bar_full.svg" id="8_5fo88"]
-[ext_resource type="AudioStream" uid="uid://4xn8xpisom8v" path="res://assets/sfxr/alarm.sfxr" id="8_754td"]
+[ext_resource type="AudioStream" uid="uid://b00oaygixknca" path="res://assets/sfxr/alarm2.sfxr" id="8_xuaym"]
+
+[sub_resource type="Animation" id="Animation_3wkex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1xjl0"]
 resource_name = "flash"
@@ -37,33 +64,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [true, true, true, true, true]
-}
-
-[sub_resource type="Animation" id="Animation_3wkex"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ptlia"]
@@ -216,7 +216,7 @@ text = "!!! DANGER ZONE !!!"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/Warning"]
-stream = ExtResource("8_754td")
+stream = ExtResource("8_xuaym")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Warning"]
 libraries = {

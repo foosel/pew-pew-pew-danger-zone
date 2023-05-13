@@ -17,11 +17,11 @@ class_name Game
 var score = 0
 var lives = 3
 var stats_shots_fired = 0
-var stats_shots_taken = 0
 var stats_enemies_killed = 0
 
 var current_level = 0
 var levels = [
+	#"empty_level",
 	"level_1",
 	"level_2",
 	"level_3",
@@ -107,13 +107,11 @@ func _on_enemy_activated(enemy: Enemy):
  
 
 func _on_player_hurt():
-	stats_shots_taken += 1
 	camera.add_trauma(1)
 	hud.set_health(player.health)
 
 
 func _on_player_died():
-	stats_shots_taken += 1
 	_add_explosion(player.position)
 
 	call_deferred("remove_child", player)
@@ -274,6 +272,8 @@ func check_level_done() -> void:
 		return
 	if level.get_enemies().size() > 0:
 		return
+	if is_level_complete:
+		return
 	
 	is_level_complete = true
 	
@@ -282,12 +282,14 @@ func check_level_done() -> void:
 			continue
 		if not Globals.in_visible_viewport(node.position):
 			continue
+		# TODO why doesn't this work? deferred?
 		player.pickup(node as Pickup)
 	
+	# TODO: pickup, unload? 
 	if current_level < levels.size() - 1:
 		level.fade_out_bgm()
 		stage_clear.show()
-		await stage_clear.display(score, current_level + 1)
+		stage_clear.display(score, current_level + 1)
 	else:
 		call_deferred("load_level", current_level + 1)
 
@@ -299,5 +301,5 @@ func trigger_game_over(won: bool) -> void:
 		Globals.write_save_game()
 	is_game_over = true
 	game_over.show()
-	game_over.display(score, is_highscore, won, stats_shots_fired, stats_shots_taken, stats_enemies_killed)
+	game_over.display(score, is_highscore, won, stats_shots_fired, stats_enemies_killed)
 
