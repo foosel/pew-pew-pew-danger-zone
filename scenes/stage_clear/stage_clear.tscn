@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c64ogky21ax0g"]
+[gd_scene load_steps=7 format=3 uid="uid://c64ogky21ax0g"]
 
 [ext_resource type="Script" path="res://scenes/stage_clear/stage_clear.gd" id="1_7yo08"]
 [ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="2_jottj"]
+[ext_resource type="AudioStream" uid="uid://c5fhrjmgv37ru" path="res://assets/sfxr/stage_clear.sfxr" id="3_8v371"]
 
 [sub_resource type="Animation" id="Animation_gxmu4"]
 length = 0.001
@@ -40,7 +41,6 @@ _data = {
 }
 
 [node name="StageClear" type="CanvasLayer"]
-process_mode = 3
 script = ExtResource("1_7yo08")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -77,3 +77,6 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_jnoix")
 }
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8v371")

@@ -6,8 +6,8 @@ class_name Drone
 @export var health = 1
 @export var bullet_speed = 200
 @export var bullet_steering = 50
-@export var min_shot_interval = .7
-@export var max_shot_interval = .3
+@export var min_shot_interval = .2
+@export var max_shot_interval = .4
 @export var bullet_scene: PackedScene = load("res://scenes/bullet/drone_bullet.tscn") as PackedScene
 @export var player: Player
 
@@ -59,7 +59,6 @@ func shoot() -> void:
 		"velocity": direction * bullet_speed,
 		"target": closest_enemy,
 		"steering": bullet_steering,
-		"rotated": true,
 	}	
 	player.shots_fired.emit([shot])
 

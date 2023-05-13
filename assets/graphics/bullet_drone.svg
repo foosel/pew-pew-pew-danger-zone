@@ -25,10 +25,10 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="13.455443"
-     inkscape:cx="28.873074"
+     inkscape:cx="28.835914"
      inkscape:cy="23.930836"
-     inkscape:window-width="1803"
-     inkscape:window-height="1104"
+     inkscape:window-width="3072"
+     inkscape:window-height="1630"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -40,12 +40,12 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#f389f5;stroke:#db3ffd;stroke-width:0.52916682;stroke-linejoin:round;stroke-dasharray:none"
+       style="fill:#f389f5;stroke:#db3ffd;stroke-width:0.529168;stroke-linejoin:round;stroke-dasharray:none"
        id="rect6846"
-       width="2.6501338"
-       height="1.0632213"
-       x="0.26097175"
-       y="-2.1188762"
-       transform="matrix(1.4817304e-4,0.99999999,-0.99999958,-9.2056684e-4,0,0)" />
+       width="1.8712226"
+       height="1.8712223"
+       x="1.3097838"
+       y="-0.93284243"
+       transform="matrix(0.70787537,0.70633736,-0.70787537,0.70633736,0,0)" />
   </g>
 </svg>

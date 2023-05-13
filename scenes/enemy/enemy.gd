@@ -12,6 +12,7 @@ class_name Enemy
 
 @onready var despawn_timer = $DespawnTimer as Timer
 @onready var on_screen_notifier = $VisibleOnScreenNotifier2D as VisibleOnScreenNotifier2D
+@onready var vfx = $VFX as AnimationPlayer
 
 var pickups = [
 	null,
@@ -35,6 +36,7 @@ signal shots_fired(shots: Array)
 signal hurt(enemy: Enemy)
 signal died(enemy: Enemy)
 signal despawned(enemy: Enemy)
+signal activated(enemy: Enemy)
 
 
 var behaviours = []
@@ -54,11 +56,11 @@ func _ready() -> void:
 
 
 func is_alive() -> bool:
-	return health > 0 and not is_despawned
+	return health > 0 and not is_despawned and (not active or Globals.in_visible_viewport(global_position - Vector2(0, activation_offset)))
 
 
 func shoot(shots: Array) -> void:
-	var offset_position = position - Vector2(0, activation_offset)
+	var offset_position = global_position - Vector2(0, activation_offset)
 	if not Globals.in_visible_viewport(offset_position):
 		return
 		
@@ -72,6 +74,7 @@ func hit(damage: int) -> void:
 		return # make sure we no longer process this on an already dead enemy
 
 	health -= damage
+	vfx.play("hit")
 
 	if health <= 0:
 		died.emit(self)
@@ -94,16 +97,24 @@ func get_score_pickups(source: String) -> int:
 	return randi_range(min_score_pickups, max_score_pickups)
 
 
-func _physics_process(delta):
-	var offset_position = position - Vector2(0, activation_offset)
-	if not Globals.in_visible_viewport_y(offset_position):
-		return
+func _process(delta):
+	for behaviour in behaviours:
+		if behaviour._process_behaviour(delta):
+			break
 
+
+func _physics_process(delta):
 	if not active:
+		var offset_position = global_position - Vector2(0, activation_offset)
+		if not Globals.in_visible_viewport_y(offset_position):
+			return
 		active = true
 		print("Behaviour processing activated for enemy " + str(self))
+		activated.emit(self)
+
 	for behaviour in behaviours:
-		behaviour._physics_process_behaviour(delta)
+		if behaviour._physics_process_behaviour(delta):
+			break
 
 
 func _on_hurtbox_body_entered(body):

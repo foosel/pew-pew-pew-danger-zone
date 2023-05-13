@@ -17,3 +17,4 @@ func _physics_process_behaviour(_delta):
 	enemy.velocity = direction * min(distance, enemy.speed)
 
 	enemy.move_and_slide()
+	return true

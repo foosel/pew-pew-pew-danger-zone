@@ -2,6 +2,9 @@ extends RigidBody2D
 class_name Pickup
 
 
+@export var max_speed = 400
+
+
 @onready var animation_player = $AnimationPlayer as AnimationPlayer
 @onready var despawn_timer = $DespawnTimer as Timer
 
@@ -18,6 +21,11 @@ func _ready() -> void:
 
 func pickup(_player: Player) -> void:
 	queue_free()
+
+
+func _physics_process(_delta):
+	if linear_velocity.length() > max_speed:
+		linear_velocity = linear_velocity.normalized() * max_speed
 
 
 func _on_despawn_timer_timeout():

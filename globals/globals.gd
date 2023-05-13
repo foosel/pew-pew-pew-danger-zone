@@ -19,6 +19,9 @@ var save_game_path = "user://save_game.dat"
 
 var current_scene = null
 
+var stage_clear_showing = false
+var game_over_showing = false
+
 
 func _ready() -> void:
 	var root = get_tree().root
@@ -57,6 +60,10 @@ func in_visible_viewport_y(pos: Vector2) -> bool:
 	var min_y = visible_viewport.position.y
 	var max_y = min_y + visible_viewport.size.y
 	return pos.y >= min_y and pos.y <= max_y
+
+
+func player_controls_enabled() -> bool:
+	return not game_over_showing and not stage_clear_showing
 
 
 func load_save_game() -> void:

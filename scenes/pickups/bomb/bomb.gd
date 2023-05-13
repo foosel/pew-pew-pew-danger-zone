@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _input(event):
-	if event.is_action_pressed("action"):
+	if Globals.player_controls_enabled() and event.is_action_pressed("action"):
 		explode()
 
 

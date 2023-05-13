@@ -16,10 +16,15 @@ class_name Game
 
 var score = 0
 var lives = 3
+var stats_shots_fired = 0
+var stats_shots_taken = 0
+var stats_enemies_killed = 0
 
 var current_level = 0
 var levels = [
 	"level_1",
+	"level_2",
+	"level_3",
 	"boss_level",
 ]
 var level: Level = null
@@ -57,17 +62,26 @@ func _process(delta):
 	if focus_point.position.y <= level_end_position:
 		Globals.scroll_speed = 0
 
-
+	
 func _on_shots_fired(shots):
 	bullet_manager.spawn_bullets(shots)
 
 
+func _on_player_shots_fired(shots):
+	stats_shots_fired += shots.size()
+	_on_shots_fired(shots)
+
+
 func _on_enemy_hurt(enemy: Enemy):
 	_add_points_pickups(enemy, "hurt")
+	if enemy.is_in_group("BossEnemy"):
+		hud.set_boss_health(enemy.health)
 
 
 func _on_enemy_died(enemy: Enemy):
 	print("Enemy " + str(enemy) + " destroyed")
+	stats_enemies_killed += 1
+
 	_add_points_pickups(enemy, "died")
 	_add_pickup(enemy)
 	_add_explosion(enemy.global_position)
@@ -75,6 +89,8 @@ func _on_enemy_died(enemy: Enemy):
 	camera.add_trauma(5)
 	score += enemy.score
 	hud.set_score(score)
+	if enemy.is_in_group("BossEnemy"):
+		hud.set_boss_health(0)
 	
 	call_deferred("check_level_done")
 
@@ -82,14 +98,22 @@ func _on_enemy_died(enemy: Enemy):
 func _on_enemy_despawned(enemy: Enemy):
 	print("Enemy " + str(enemy) + " despawned")
 	call_deferred("check_level_done")
+
+
+func _on_enemy_activated(enemy: Enemy):
+	print("Enemy " + str(enemy) + " activated")
+	if enemy.is_in_group("BossEnemy"):
+		hud.enable_boss_health_bar(enemy.health, enemy.health)
  
 
 func _on_player_hurt():
+	stats_shots_taken += 1
 	camera.add_trauma(1)
 	hud.set_health(player.health)
 
 
 func _on_player_died():
+	stats_shots_taken += 1
 	_add_explosion(player.position)
 
 	call_deferred("remove_child", player)
@@ -148,8 +172,9 @@ func _add_explosion(pos: Vector2) -> void:
 func _add_pickup(enemy: Enemy) -> void:
 	var pickup_scene = enemy.get_pickup()
 	if pickup_scene:
-		var pickup = pickup_scene.instantiate()
-		pickup.position = enemy.global_position + Vector2(randf_range(-10, +10), randf_range(-10, +10))
+		var pickup = pickup_scene.instantiate() as Pickup
+		var offset = Vector2(randf_range(-10, +10), randf_range(-10, +10))
+		pickup.global_position = enemy.global_position + offset
 		call_deferred("add_child", pickup)
 
 
@@ -160,15 +185,15 @@ func _add_points_pickups(enemy: Enemy, source: String) -> void:
 		spread = 64
 
 	for x in range(amount):
-		var pickup = points_pickup_scene.instantiate()
-		pickup.position = Vector2(
-			enemy.global_position.x + randi_range(-spread, spread), 
-			enemy.global_position.y + randi_range(-spread, spread)
-		)
+		var pickup = points_pickup_scene.instantiate() as Pickup
+		var offset = Vector2(randf_range(-spread, spread), randf_range(-spread, spread))
+		pickup.global_position = enemy.global_position + offset
 		call_deferred("add_child", pickup)
 
 
 func start_game() -> void:
+	Globals.stage_clear_showing = false
+	Globals.game_over_showing = false
 	load_level()
 	sync_hud()
 
@@ -219,6 +244,7 @@ func connect_enemies(enemies: Array[Enemy]) -> void:
 		enemy.died.connect(_on_enemy_died)
 		enemy.despawned.connect(_on_enemy_despawned)
 		enemy.shots_fired.connect(_on_shots_fired)
+		enemy.activated.connect(_on_enemy_activated)
 
 
 func reset_scroll() -> void:
@@ -249,7 +275,7 @@ func check_level_done() -> void:
 	if level.get_enemies().size() > 0:
 		return
 	
-	is_level_complete = "true"
+	is_level_complete = true
 	
 	for node in get_tree().get_nodes_in_group("Pickup"):
 		if not node is Pickup:
@@ -259,8 +285,9 @@ func check_level_done() -> void:
 		player.pickup(node as Pickup)
 	
 	if current_level < levels.size() - 1:
+		level.fade_out_bgm()
 		stage_clear.show()
-		stage_clear.display(score, current_level + 1)
+		await stage_clear.display(score, current_level + 1)
 	else:
 		call_deferred("load_level", current_level + 1)
 
@@ -272,4 +299,5 @@ func trigger_game_over(won: bool) -> void:
 		Globals.write_save_game()
 	is_game_over = true
 	game_over.show()
-	game_over.display(score, is_highscore, won)
+	game_over.display(score, is_highscore, won, stats_shots_fired, stats_shots_taken, stats_enemies_killed)
+

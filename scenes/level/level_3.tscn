@@ -1,0 +1,282 @@
+[gd_scene load_steps=14 format=3 uid="uid://immbwes1pjvs"]
+
+[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
+[ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
+[ext_resource type="Texture2D" uid="uid://cts2u0su8of86" path="res://assets/graphics/level3.svg" id="2_ahiac"]
+[ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
+[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
+[ext_resource type="Script" path="res://scenes/enemy/behaviour/circle_target_behaviour.gd" id="6_vt5ra"]
+
+[sub_resource type="Animation" id="Animation_l30t3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StraightEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(360, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StraightEnemy2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(920, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0irku"]
+resource_name = "patrol"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StraightEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(360, 0), Vector2(920, -256)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StraightEnemy2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(920, 0), Vector2(360, -256)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k478d"]
+_data = {
+"RESET": SubResource("Animation_l30t3"),
+"patrol": SubResource("Animation_0irku")
+}
+
+[sub_resource type="Animation" id="Animation_ai64q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gxq7f"]
+resource_name = "patrol"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-64, 0), Vector2(64, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-64, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1u71"]
+_data = {
+"RESET": SubResource("Animation_ai64q"),
+"patrol": SubResource("Animation_gxq7f")
+}
+
+[node name="Level3" instance=ExtResource("1_rl17j")]
+
+[node name="Background" parent="." index="0"]
+position = Vector2(640, -681)
+texture = ExtResource("2_ahiac")
+
+[node name="Exit" parent="Background" index="0"]
+position = Vector2(0, 424)
+
+[node name="CollisionShape2D" parent="Background/Exit" index="0"]
+position = Vector2(7, -1970)
+
+[node name="CircularEnemy" parent="." index="2" instance=ExtResource("2_48crl")]
+position = Vector2(652, -97)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy" index="8"]
+script = ExtResource("3_anepg")
+
+[node name="StraightEnemy" parent="." index="3" instance=ExtResource("5_8rx0d")]
+position = Vector2(713, -93)
+
+[node name="CircleTargetBehaviour" type="Node" parent="StraightEnemy" index="10" node_paths=PackedStringArray("target")]
+script = ExtResource("6_vt5ra")
+target = NodePath("../../CircularEnemy")
+radius = 80
+start_angle = 90
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy" index="11"]
+script = ExtResource("3_anepg")
+
+[node name="RectangularEnemy" parent="." index="4" instance=ExtResource("6_dyy6o")]
+position = Vector2(920, -167)
+
+[node name="RectangularEnemy2" parent="." index="5" instance=ExtResource("6_dyy6o")]
+position = Vector2(360, -164)
+
+[node name="RectangularEnemy6" parent="." index="6" instance=ExtResource("6_dyy6o")]
+position = Vector2(640, -164)
+
+[node name="Node2D" type="Node2D" parent="." index="7"]
+position = Vector2(0, -375)
+
+[node name="StraightEnemy" parent="Node2D" index="0" instance=ExtResource("5_8rx0d")]
+position = Vector2(360, 0)
+
+[node name="StraightEnemy2" parent="Node2D" index="1" instance=ExtResource("5_8rx0d")]
+position = Vector2(920, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" index="2"]
+autoplay = "patrol"
+libraries = {
+"": SubResource("AnimationLibrary_k478d")
+}
+
+[node name="CircularEnemy2" parent="." index="8" instance=ExtResource("2_48crl")]
+position = Vector2(464, -765)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy2" index="7"]
+script = ExtResource("3_anepg")
+offset = Vector2(200, -200)
+
+[node name="CircularEnemy3" parent="." index="9" instance=ExtResource("2_48crl")]
+position = Vector2(792, -769)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy3" index="7"]
+script = ExtResource("3_anepg")
+offset = Vector2(200, -200)
+
+[node name="Node2D2" type="Node2D" parent="." index="10"]
+position = Vector2(400, -1098)
+
+[node name="RectangularEnemy3" parent="." index="11" instance=ExtResource("6_dyy6o")]
+position = Vector2(485, -1105)
+
+[node name="CircleTargetBehaviour" type="Node" parent="RectangularEnemy3" index="8" node_paths=PackedStringArray("target")]
+script = ExtResource("6_vt5ra")
+target = NodePath("../../Node2D2")
+start_angle = 90
+rotate_speed = -3
+
+[node name="Node2D3" type="Node2D" parent="." index="12"]
+position = Vector2(880, -1098)
+
+[node name="RectangularEnemy4" parent="." index="13" instance=ExtResource("6_dyy6o")]
+position = Vector2(485, -1105)
+
+[node name="CircleTargetBehaviour" type="Node" parent="RectangularEnemy4" index="8" node_paths=PackedStringArray("target")]
+script = ExtResource("6_vt5ra")
+target = NodePath("../../Node2D3")
+start_angle = 90
+rotate_speed = -3
+
+[node name="Node2D4" type="Node2D" parent="." index="14"]
+position = Vector2(640, -1098)
+
+[node name="RectangularEnemy5" parent="." index="15" instance=ExtResource("6_dyy6o")]
+position = Vector2(485, -1105)
+
+[node name="CircleTargetBehaviour" type="Node" parent="RectangularEnemy5" index="8" node_paths=PackedStringArray("target")]
+script = ExtResource("6_vt5ra")
+target = NodePath("../../Node2D4")
+start_angle = 90
+rotate_speed = -3
+
+[node name="StraightEnemy2" parent="." index="16" instance=ExtResource("5_8rx0d")]
+position = Vector2(574, -1615)
+
+[node name="CircleTargetBehaviour" type="Node" parent="StraightEnemy2" index="10" node_paths=PackedStringArray("target")]
+script = ExtResource("6_vt5ra")
+target = NodePath("../../CircularEnemy4")
+radius = 80
+start_angle = 90
+
+[node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy2" index="11"]
+script = ExtResource("3_anepg")
+
+[node name="CircularEnemy4" parent="." index="17" instance=ExtResource("2_48crl")]
+position = Vector2(641, -1619)
+
+[node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy4" index="8"]
+script = ExtResource("3_anepg")
+
+[node name="Node2D5" type="Node2D" parent="." index="18"]
+position = Vector2(0, -544)
+
+[node name="Node" type="Node2D" parent="Node2D5" index="0"]
+position = Vector2(-64, 0)
+
+[node name="RectangularEnemy3" parent="Node2D5/Node" index="0" instance=ExtResource("6_dyy6o")]
+position = Vector2(390, -1313)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy4" parent="Node2D5/Node" index="1" instance=ExtResource("6_dyy6o")]
+position = Vector2(903, -1313)
+speed = 100
+activation_offset = -32
+
+[node name="RectangularEnemy5" parent="Node2D5/Node" index="2" instance=ExtResource("6_dyy6o")]
+position = Vector2(653, -1313)
+speed = 100
+activation_offset = -32
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D5" index="1"]
+autoplay = "patrol"
+libraries = {
+"": SubResource("AnimationLibrary_u1u71")
+}

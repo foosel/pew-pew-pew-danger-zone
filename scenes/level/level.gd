@@ -7,6 +7,9 @@ class_name Level
 @onready var background = $Background as Sprite2D
 @onready var exit = $Background/Exit as Area2D
 @onready var exit_shape = $Background/Exit/CollisionShape2D as CollisionShape2D
+@onready var bgm = $BGM as AudioStreamPlayer
+@onready var bgm_animation = $BGM/AnimationPlayer as AnimationPlayer
+
 
 signal player_reached_exit()
 
@@ -40,6 +43,10 @@ func get_enemies() -> Array[Enemy]:
 
 func get_level_size() -> Vector2:
 	return background.get_rect().size
+
+
+func fade_out_bgm() -> void:
+	bgm_animation.play("fade_out")
 
 
 func _on_exit_body_entered(body):

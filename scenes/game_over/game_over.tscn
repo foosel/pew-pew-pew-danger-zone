@@ -79,6 +79,14 @@ layout_mode = 2
 text = "New Highscore!"
 horizontal_alignment = 1
 
+[node name="Stats" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Shots fired: 1234
+Enemies killed: 1234
+"
+horizontal_alignment = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_jnoix")

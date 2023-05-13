@@ -12,6 +12,10 @@ func _ready() -> void:
 	enemy = parent
 
 
+func _process_behaviour(_delta) -> void:
+	pass
+
+
 func _physics_process_behaviour(_delta) -> void:
 	pass
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvxey18okvxek"]
+[gd_scene load_steps=14 format=3 uid="uid://bvxey18okvxek"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_vdakb"]
 [ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/empty_bar.svg" id="2_7h0kc"]
@@ -6,6 +6,71 @@
 [ext_resource type="Texture2D" uid="uid://d2mvrn0e6bto5" path="res://assets/graphics/lives_bar.svg" id="3_i64v2"]
 [ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/health_bar.svg" id="3_u2q4l"]
 [ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/bullet_bar.svg" id="4_nna8r"]
+[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="7_2r67m"]
+[ext_resource type="Texture2D" uid="uid://b77w242v0xrue" path="res://assets/graphics/boss_bar_empty.svg" id="7_l8cnc"]
+[ext_resource type="Texture2D" uid="uid://q3rdi2qi66ws" path="res://assets/graphics/boss_bar_full.svg" id="8_5fo88"]
+[ext_resource type="AudioStream" uid="uid://4xn8xpisom8v" path="res://assets/sfxr/alarm.sfxr" id="8_754td"]
+
+[sub_resource type="Animation" id="Animation_1xjl0"]
+resource_name = "flash"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_3wkex"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptlia"]
+_data = {
+"RESET": SubResource("Animation_3wkex"),
+"flash": SubResource("Animation_1xjl0")
+}
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vdakb")
@@ -128,3 +193,41 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("2_24nue")
 theme_override_font_sizes/font_size = 32
 text = "FPS"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Warning" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("7_2r67m")
+theme_override_colors/font_color = Color(0.768627, 0.141176, 0.188235, 1)
+theme_override_colors/font_outline_color = Color(0.537255, 0.117647, 0.168627, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 64
+text = "!!! DANGER ZONE !!!"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/Warning"]
+stream = ExtResource("8_754td")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Warning"]
+libraries = {
+"": SubResource("AnimationLibrary_ptlia")
+}
+
+[node name="BossHealthBar" type="TextureProgressBar" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+value = 25.0
+texture_under = ExtResource("7_l8cnc")
+texture_progress = ExtResource("8_5fo88")

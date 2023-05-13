@@ -1,13 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://chic3e5qr72cu"]
+[gd_scene load_steps=8 format=3 uid="uid://chic3e5qr72cu"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_uv6bn"]
 [ext_resource type="Texture2D" uid="uid://l2cscf7qqqg4" path="res://assets/graphics/enemy_rectangle.svg" id="2_3eetq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_urubm"]
-size = Vector2(32, 32)
+size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eihnp"]
-radius = 16.0312
+radius = 31.0161
+
+[sub_resource type="Animation" id="Animation_tc25c"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(10, 10, 10, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iqoqo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4tggp"]
+_data = {
+"RESET": SubResource("Animation_iqoqo"),
+"hit": SubResource("Animation_tc25c")
+}
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
@@ -24,9 +61,11 @@ texture = ExtResource("2_3eetq")
 texture = ExtResource("2_3eetq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_urubm")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -34,11 +73,17 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_eihnp")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(-7.15256e-07, 24)
 scale = Vector2(1.6, 4)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="VFX" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4tggp")
+}
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

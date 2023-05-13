@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0jxdmnqivvfu"]
+[gd_scene load_steps=7 format=3 uid="uid://b0jxdmnqivvfu"]
 
 [ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="1_1kruj"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_1x5ao"]
 [ext_resource type="Texture2D" uid="uid://bgjqeuoxx8eru" path="res://assets/graphics/menu_background.png" id="2_tj7au"]
 [ext_resource type="Texture2D" uid="uid://ctek363x3ioqa" path="res://assets/graphics/menu_foreground.png" id="3_kim82"]
 [ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="4_2ui0k"]
+[ext_resource type="AudioStream" uid="uid://byltfj35bv2vd" path="res://assets/music/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg" id="6_x7oih"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -124,6 +125,10 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 text = "Back"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_x7oih")
+autoplay = true
 
 [connection signal="pressed" from="Main/HBoxContainer/New Game" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Main/HBoxContainer/Credits" to="." method="_on_credits_pressed"]

@@ -11,7 +11,7 @@ func _integrate_forces(_state):
 		return
 	
 	var direction = (target.global_position - global_position).normalized()
-	apply_force(direction * steering)
+	apply_central_force(direction * steering)
 
 
 func explode() -> void:

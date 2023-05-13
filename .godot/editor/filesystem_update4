@@ -1,0 +1,12 @@
+res://scenes/level/level_1.tscn
+res://scenes/level/level_2.tscn
+res://scenes/game/game.tscn
+res://scenes/enemy/circular_enemy.tscn
+res://scenes/level/level_3.tscn
+res://scenes/enemy/enemy.gd
+res://scenes/hud/hud.tscn
+res://scenes/level/boss_level.tscn
+res://scenes/game/game.gd
+res://scenes/hud/hud.gd
+res://scenes/game_over/game_over.tscn
+res://scenes/game_over/game_over.gd

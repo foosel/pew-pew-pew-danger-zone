@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgiyhe0u7y45d"]
+
+[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_b7dm4"]
+[ext_resource type="Script" path="res://scenes/enemy/boss_enemy.gd" id="2_18fqs"]
+[ext_resource type="Texture2D" uid="uid://caq7masahr87v" path="res://assets/graphics/boss.svg" id="2_njrvk"]
+[ext_resource type="Texture2D" uid="uid://c8s63knenmw8h" path="res://assets/graphics/boss_shield.svg" id="3_3gylr"]
+[ext_resource type="PackedScene" uid="uid://0ou2ap3t0dj" path="res://scenes/bullet_emitter/enemy_bullet_emitter.tscn" id="3_a51dw"]
+[ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="4_4skqp"]
+[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_msh04"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lwck0"]
+radius = 48.0104
+
+[node name="BossEnemy" groups=["BossEnemy"] instance=ExtResource("1_b7dm4")]
+script = ExtResource("2_18fqs")
+satellite_rotate_speed = 3
+satellite_radius = 128
+health = 100
+score = 1000
+named = "Boss"
+min_score_pickups = 10
+max_score_pickups = 50
+
+[node name="Shield" type="Area2D" parent="." index="0"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Shield" index="0"]
+texture = ExtResource("3_3gylr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield" index="1"]
+shape = SubResource("CircleShape2D_lwck0")
+
+[node name="ShieldTimer" type="Timer" parent="." index="1"]
+wait_time = 2.0
+
+[node name="Shadow" parent="." index="2"]
+texture = ExtResource("2_njrvk")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_njrvk")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="6"]
+position = Vector2(-4.76837e-07, 24)
+scale = Vector2(3.2, 5.6)
+
+[node name="EnemyBulletEmitter" parent="." index="8" instance=ExtResource("3_a51dw")]
+
+[node name="CircularBulletPattern" parent="EnemyBulletEmitter" index="1" instance=ExtResource("4_4skqp")]
+visible = false
+distance = 64
+offset_angle_per_firing = 15
+
+[node name="StraightEnemy" parent="." index="9" groups=["Satellite"] instance=ExtResource("5_msh04")]
+position = Vector2(72, 0)
+activation_offset = 0
+
+[node name="StraightEnemy2" parent="." index="10" groups=["Satellite"] instance=ExtResource("5_msh04")]
+position = Vector2(-57, 83)
+activation_offset = 0
+
+[node name="StraightEnemy3" parent="." index="11" groups=["Satellite"] instance=ExtResource("5_msh04")]
+position = Vector2(-67, -76)
+activation_offset = 0
+
+[node name="StraightEnemy4" parent="." index="12" groups=["Satellite"] instance=ExtResource("5_msh04")]
+position = Vector2(-134, -152)
+activation_offset = 0
+
+[node name="StraightEnemy5" parent="." index="13" groups=["Satellite"] instance=ExtResource("5_msh04")]
+position = Vector2(-268, -304)
+activation_offset = 0
+
+[connection signal="body_entered" from="Shield" to="." method="_on_shield_body_entered"]
+[connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]

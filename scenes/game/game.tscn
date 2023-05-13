@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwh0uleq84d4k"]
+[gd_scene load_steps=9 format=3 uid="uid://dwh0uleq84d4k"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_irmuf"]
 [ext_resource type="PackedScene" uid="uid://c1nj5wjj0bnap" path="res://scenes/player/player.tscn" id="1_qh5ax"]
@@ -8,14 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bos43k0dtskkv" path="res://scenes/camera/shakeable_camera.tscn" id="7_gys52"]
 [ext_resource type="PackedScene" uid="uid://codck442xsoqk" path="res://scenes/game_over/game_over.tscn" id="7_s1g1g"]
 [ext_resource type="PackedScene" uid="uid://c64ogky21ax0g" path="res://scenes/stage_clear/stage_clear.tscn" id="8_6kcgt"]
-[ext_resource type="AudioStream" uid="uid://2sokr0hd4so8" path="res://assets/music/DavidKBD - Eternity Pack - 06 - God of darkness - loop.ogg" id="12_shdmi"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_irmuf")
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_shdmi")
-autoplay = true
 
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -56,6 +51,6 @@ visible = false
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]
 [connection signal="hurt" from="Player" to="." method="_on_player_hurt"]
 [connection signal="scored" from="Player" to="." method="_on_player_scored"]
-[connection signal="shots_fired" from="Player" to="." method="_on_shots_fired"]
+[connection signal="shots_fired" from="Player" to="." method="_on_player_shots_fired"]
 [connection signal="exit_game" from="PauseMenu" to="." method="_on_pause_menu_exit_game"]
 [connection signal="resume_game" from="PauseMenu" to="." method="_on_pause_menu_resume_game"]

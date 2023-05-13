@@ -6,6 +6,10 @@ class_name HUD
 @onready var bullet_bar = $RightBar/MarginContainer/HBoxContainer/BulletBar as TextureProgressBar
 @onready var life_bar = $LeftBar/MarginContainer/LifeBar as TextureProgressBar
 
+@onready var boss_health_bar = $MarginContainer/BossHealthBar as TextureProgressBar
+@onready var warning = $MarginContainer/Warning as Label
+@onready var warning_animation = $MarginContainer/Warning/AnimationPlayer as AnimationPlayer
+
 @onready var score_label = $RightBar/MarginContainer/VBoxContainer/ScoreLabel as Label
 @onready var fps_label = $RightBar/MarginContainer/VBoxContainer/FPSLabel as Label
 @onready var shield_label = $RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/ShieldLabel as Label
@@ -54,6 +58,25 @@ func set_score(score: int) -> void:
 func disable_bars() -> void:
 	health_bar.value = 0
 	bullet_bar.value = 0
+
+
+func enable_boss_health_bar(health: int, max_health: int) -> void:
+	warning.show()
+	warning_animation.play("flash")
+	await warning_animation.animation_finished
+
+	boss_health_bar.max_value = max_health
+	boss_health_bar.value = health
+	boss_health_bar.show()
+
+
+func disable_boss_health_bar() -> void:
+	boss_health_bar.hide()
+	warning.hide()
+
+
+func set_boss_health(amount: int) -> void:
+	boss_health_bar.value = amount
 
 
 func reset_status_indicators() -> void:

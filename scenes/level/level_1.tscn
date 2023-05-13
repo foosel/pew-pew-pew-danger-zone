@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(64, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_gxq7f"]
@@ -72,7 +72,7 @@ _data = {
 [node name="Level1" instance=ExtResource("1_rl17j")]
 
 [node name="Background" parent="." index="0"]
-position = Vector2(640, -1033)
+position = Vector2(640, -881)
 
 [node name="Exit" parent="Background" index="0"]
 position = Vector2(0, 424)
@@ -105,11 +105,11 @@ angle = 135.0
 scroll_along = false
 
 [node name="RectangularEnemy" parent="." index="4" instance=ExtResource("6_dyy6o")]
-position = Vector2(419, -471)
+position = Vector2(400, -471)
 speed = 100
 
 [node name="RectangularEnemy2" parent="." index="5" instance=ExtResource("6_dyy6o")]
-position = Vector2(853, -471)
+position = Vector2(880, -471)
 speed = 100
 
 [node name="StraightEnemy2" parent="." index="6" instance=ExtResource("5_8rx0d")]
@@ -119,7 +119,7 @@ position = Vector2(640, -531)
 script = ExtResource("3_anepg")
 
 [node name="CircularEnemy2" parent="." index="7" instance=ExtResource("2_48crl")]
-position = Vector2(640, -997)
+position = Vector2(640, -901)
 
 [node name="FollowPlayerBehaviour" type="Node" parent="CircularEnemy2" index="7"]
 script = ExtResource("3_anepg")
@@ -130,34 +130,35 @@ script = ExtResource("3_anepg")
 position = Vector2(-64, 0)
 
 [node name="RectangularEnemy3" parent="Node2D/Node" index="0" instance=ExtResource("6_dyy6o")]
-position = Vector2(390, -1281)
+position = Vector2(390, -1193)
 speed = 100
 activation_offset = -32
 
 [node name="RectangularEnemy4" parent="Node2D/Node" index="1" instance=ExtResource("6_dyy6o")]
-position = Vector2(903, -1281)
+position = Vector2(903, -1193)
 speed = 100
 activation_offset = -32
 
 [node name="RectangularEnemy5" parent="Node2D/Node" index="2" instance=ExtResource("6_dyy6o")]
-position = Vector2(653, -1281)
+position = Vector2(653, -1193)
 speed = 100
 activation_offset = -32
 
 [node name="Node2" type="Node2D" parent="Node2D" index="1"]
+position = Vector2(64, 0)
 
 [node name="RectangularEnemy6" parent="Node2D/Node2" index="0" instance=ExtResource("6_dyy6o")]
-position = Vector2(390, -1632)
+position = Vector2(390, -1544)
 speed = 100
 activation_offset = -32
 
 [node name="RectangularEnemy7" parent="Node2D/Node2" index="1" instance=ExtResource("6_dyy6o")]
-position = Vector2(903, -1632)
+position = Vector2(903, -1544)
 speed = 100
 activation_offset = -32
 
 [node name="RectangularEnemy8" parent="Node2D/Node2" index="2" instance=ExtResource("6_dyy6o")]
-position = Vector2(653, -1632)
+position = Vector2(653, -1544)
 speed = 100
 activation_offset = -32
 
@@ -168,14 +169,14 @@ libraries = {
 }
 
 [node name="StraightEnemy3" parent="." index="9" instance=ExtResource("5_8rx0d")]
-position = Vector2(813, -2484)
+position = Vector2(837, -2084)
 activation_offset = -128
 
 [node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy3" index="9"]
 script = ExtResource("3_anepg")
 
 [node name="StraightEnemy4" parent="." index="10" instance=ExtResource("5_8rx0d")]
-position = Vector2(524, -2041)
+position = Vector2(452, -2081)
 activation_offset = -128
 
 [node name="FollowPlayerBehaviour" type="Node" parent="StraightEnemy4" index="9"]

@@ -39,13 +39,17 @@ func _ready() -> void:
 func _physics_process(_delta):
 	if health <= 0:
 		return
-	
-	if Input.is_action_pressed("shoot") and last_shot < Time.get_ticks_msec() - bullet_fire_interval * 1000:
-		last_shot = Time.get_ticks_msec()
-		shoot()
 
-	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * speed + Vector2.UP * Globals.scroll_speed
+	var input_velocity = Vector2.ZERO
+	if Globals.player_controls_enabled():
+		if Input.is_action_pressed("shoot") and last_shot < Time.get_ticks_msec() - bullet_fire_interval * 1000:
+			last_shot = Time.get_ticks_msec()
+			shoot()
+
+		var direction = Input.get_vector("left", "right", "up", "down")
+		input_velocity = direction * speed
+	
+	velocity = input_velocity + Vector2.UP * Globals.scroll_speed
 
 	move_and_slide()
 
