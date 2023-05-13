@@ -13,3 +13,7 @@ tasks:
     export_linux:
         cmds:
             - godot --headless --export-release Linux/X11 export/pew-pew-pew-danger-zone.x86_64
+
+    gource:
+        cmds:
+            - gource -1280x720 --multi-sampling --stop-at-end --key --highlight-users --background-colour 000000 --font-size 25 --output-ppm-stream - --output-framerate 30 | ffmpeg -y -r 30 -f image2pipe -vcodec ppm -i - -b 65536K export/gource.mp4
