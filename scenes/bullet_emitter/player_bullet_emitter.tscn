@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cg0gjefetqfm2" path="res://scenes/bullet_emitter/bullet_emitter.tscn" id="1_qbmms"]
 [ext_resource type="Script" path="res://scenes/bullet_emitter/player_bullet_emitter.gd" id="2_nqg1l"]
-[ext_resource type="PackedScene" uid="uid://brjlmeww2201m" path="res://scenes/bullet/player_bullet.tscn" id="3_xk6jw"]
+[ext_resource type="PackedScene" path="res://scenes/bullet/player_bullet.tscn" id="3_xk6jw"]
 
 [node name="PlayerBulletEmitter" instance=ExtResource("1_qbmms")]
 script = ExtResource("2_nqg1l")

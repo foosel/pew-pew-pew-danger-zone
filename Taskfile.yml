@@ -2,15 +2,17 @@ version: "3"
 
 tasks:
     export:
-        deps: [export_web, export_linux]
+        cmds:
+            - task: export-web
+            - task: export-linux
     
-    export_web:
+    export-web:
         cmds:
             - godot --headless --export-release Web export/web/pewpewpew.html
             - mv export/web/pewpewpew.html export/web/index.html
             - cd export/web && rm -f ../pew-pew-pew-danger-zone.zip && zip ../pew-pew-pew-danger-zone.zip *
     
-    export_linux:
+    export-linux:
         cmds:
             - godot --headless --export-release Linux/X11 export/pew-pew-pew-danger-zone.x86_64
 
