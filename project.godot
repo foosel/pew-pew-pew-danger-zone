@@ -14,6 +14,7 @@ config/name="Pew Pew Pew: Danger Zone!"
 run/main_scene="res://scenes/menu/menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
