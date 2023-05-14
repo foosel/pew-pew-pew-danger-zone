@@ -81,10 +81,10 @@ func shoot():
 
 
 func hit() -> void:
-	if health <= 0:
-		return
-		
 	if Globals.stage_done or Globals.game_over:
+		return
+
+	if health <= 0:
 		return
 
 	health -= 1
@@ -99,6 +99,10 @@ func hit() -> void:
 
 
 func pickup(item: Pickup) -> void:
+	if Globals.stage_done or Globals.game_over:
+		return
+
+	print("Picked up " + str(item))
 	pickup_sfx.play()
 	item.pickup(self)
 	

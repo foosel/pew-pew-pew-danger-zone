@@ -20,8 +20,24 @@ var save_game_path = "user://save_game.dat"
 var current_scene = null
 
 
-var stage_done = false
-var game_over = false
+signal stage_cleared(flag: bool)
+var _stage_done: bool = false
+var stage_done: bool:
+	get:
+		return _stage_done
+	set(value):
+		_stage_done = value
+		stage_cleared.emit(value)
+
+
+signal game_finished(flag: bool)
+var _game_over: bool = false
+var game_over: bool:
+	get:
+		return _game_over
+	set(value):
+		_game_over = value
+		game_finished.emit(value)
 
 
 func _ready() -> void:

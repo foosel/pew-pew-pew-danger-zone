@@ -13,35 +13,35 @@ func _process(_delta) -> void:
 	queue_redraw()
 
 
-func draw_circle_arc(center: Vector2, radius: float, angle_from: float, angle_to: float, color: Color):
+func draw_circle_arc(c: Vector2, r: float, angle_from: float, angle_to: float, color: Color):
 	var nb_points = 64
 	var points = PackedVector2Array()
 	
 	for i in range(nb_points + 1):
 		var angle_point = deg_to_rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
-		points.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+		points.push_back(c + Vector2(cos(angle_point), sin(angle_point)) * r)
 	
 	for index_point in range(nb_points):
 		draw_line(points[index_point], points[index_point + 1], color, 2, true)
 
 
-func draw_circle_arc_poly(center: Vector2, radius: float, angle_from: float, angle_to: float, fill_color: Color, line_color: Color):
+func draw_circle_arc_poly(c: Vector2, r: float, angle_from: float, angle_to: float, fc: Color, lc: Color):
 	var nb_points = 64
 	var points = PackedVector2Array()
-	points.push_back(center)
-	var colors = PackedColorArray([fill_color])
+	points.push_back(c)
+	var colors = PackedColorArray([fc])
 	
 	for i in range(nb_points + 1):
 		var angle_point = deg_to_rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
-		points.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+		points.push_back(c + Vector2(cos(angle_point), sin(angle_point)) * r)
 	
 	draw_polygon(points, colors)
 	
-	if line_color:
-		draw_circle_arc(center, radius, angle_from, angle_to, line_color)
+	if lc:
+		draw_circle_arc(c, r, angle_from, angle_to, lc)
 		var angle_diff = clamp(abs(angle_from - angle_to), 0, 360)
 		if angle_diff > 0 and angle_diff < 360:
-			var point_from = center + Vector2(cos(angle_from), sin(angle_from)) * radius
-			var point_to = center + Vector2(cos(angle_to), sin(angle_to)) * radius
-			draw_line(center, point_from, line_color, 2, true)
-			draw_line(center, point_to, line_color, 2, true)
+			var point_from = c + Vector2(cos(angle_from), sin(angle_from)) * r
+			var point_to = c + Vector2(cos(angle_to), sin(angle_to)) * r
+			draw_line(c, point_from, lc, 2, true)
+			draw_line(c, point_to, lc, 2, true)

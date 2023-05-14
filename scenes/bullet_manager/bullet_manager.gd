@@ -35,7 +35,7 @@ func spawn_bullets(bullets: Array) -> void:
 		spawn_bullet(b["scene"], b["position"], b["velocity"], base_velocity, rotated, target, steering)
 
 
-func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, base_velocity: Vector2, rotated: bool = false, target: Node2D = null, steering: float = 0) -> void:
+func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, _base_velocity: Vector2, rotated: bool = false, target: Node2D = null, steering: float = 0) -> void:
 	var bullet = scene.instantiate() as Bullet
 
 	if rotated:

@@ -19,7 +19,7 @@ class_name HUD
 
 @onready var controls_help = $MarginContainer/ControlsHelp as MarginContainer
 @onready var controls_help_animation = $MarginContainer/ControlsHelp/AnimationPlayer as AnimationPlayer
-@onready var controls_help_timer = $MarginContainer/ControlsHelp/Timer as Timer
+@onready var controls_help_timer = $MarginContainer/ControlsHelp/ControlsHelpTimer as Timer
 
 
 var active_color = Color("#ffffff")

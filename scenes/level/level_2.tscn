@@ -14,19 +14,19 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(360, 0)]
+"values": [Vector2(920, -64)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RectangularEnemy2:position")
+tracks/1/path = NodePath("../../Node2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +43,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,14 +55,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RectangularEnemy2:position")
+tracks/1/path = NodePath("../../Node2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(360, 64), Vector2(920, 64)]
+"values": [Vector2(360, 0), Vector2(920, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q54xo"]
@@ -162,14 +162,18 @@ offset = Vector2(-200, -200)
 [node name="Node2D" type="Node2D" parent="." index="3"]
 position = Vector2(0, -375)
 
-[node name="RectangularEnemy" parent="Node2D" index="0" instance=ExtResource("6_dyy6o")]
+[node name="Node2D" type="Node2D" parent="Node2D" index="0"]
+position = Vector2(920, -64)
+
+[node name="RectangularEnemy" parent="Node2D/Node2D" index="0" instance=ExtResource("6_dyy6o")]
+
+[node name="Node2D2" type="Node2D" parent="Node2D" index="1"]
 position = Vector2(360, 0)
 
-[node name="RectangularEnemy2" parent="Node2D" index="1" instance=ExtResource("6_dyy6o")]
-position = Vector2(360, 0)
+[node name="RectangularEnemy2" parent="Node2D/Node2D2" index="0" instance=ExtResource("6_dyy6o")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" index="2"]
-root_node = NodePath("../RectangularEnemy")
+root_node = NodePath("../Node2D/RectangularEnemy")
 autoplay = "patrol"
 libraries = {
 "": SubResource("AnimationLibrary_q54xo")

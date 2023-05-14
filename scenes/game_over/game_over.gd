@@ -24,5 +24,6 @@ func display(score: int, highscore: bool, won: bool, shots_fired: int, enemies_k
 	
 	stats.text = "Shots fired: " + str(shots_fired) + "\nEnemies killed: " + str(enemies_killed)
 
-	animation.play("fade_in")
+	if not won:
+		animation.play("fade_in")
 

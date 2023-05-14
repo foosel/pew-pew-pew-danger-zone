@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://d0ap45my3uybu"]
 
 [ext_resource type="Script" path="res://scenes/pickups/shield/shield.gd" id="1_8jog7"]
 [ext_resource type="Texture2D" uid="uid://d1dlrssbgx0mh" path="res://assets/graphics/pickups/shield.svg" id="1_vqoqj"]

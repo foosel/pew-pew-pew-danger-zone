@@ -126,6 +126,8 @@ func _on_player_died():
 
 
 func _on_respawn_timer_timeout():
+	if Globals.stage_done:
+		return
 	respawn_player()
 
 
@@ -144,6 +146,9 @@ func _on_player_drone_died(drone):
 
 
 func _on_level_player_reached_exit():
+	if level_exit_reached:
+		return
+
 	print("Level exit reached (Area)")
 	level_exit_reached = true
 	if not check_level_done():
@@ -274,9 +279,6 @@ func check_level_done() -> bool:
 	if Globals.stage_done:
 		return true
 	
-	Globals.stage_done = true
-	level_done_check_timer.stop()
-	
 	for node in get_tree().get_nodes_in_group("Pickup"):
 		if not node is Pickup:
 			continue
@@ -284,8 +286,12 @@ func check_level_done() -> bool:
 			continue
 		# TODO why doesn't this work? deferred?
 		player.pickup(node as Pickup)
+		print("Picking up " + str(node))
+
+	Globals.stage_done = true
+	level_done_check_timer.stop()
+	print("Level done!")
 	
-	# TODO: pickup, unload? 
 	if current_level < levels.size() - 1:
 		level.fade_out_bgm()
 		stage_clear.show()
@@ -304,7 +310,6 @@ func trigger_game_over(won: bool) -> void:
 	Globals.game_over = true
 	game_over.show()
 	game_over.display(score, is_highscore, won, stats_shots_fired, stats_enemies_killed)
-
 
 
 func _on_level_done_check_timer_timeout():

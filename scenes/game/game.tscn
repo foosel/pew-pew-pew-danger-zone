@@ -13,7 +13,7 @@
 script = ExtResource("1_irmuf")
 
 [node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="LevelDoneCheckTimer" type="Timer" parent="."]

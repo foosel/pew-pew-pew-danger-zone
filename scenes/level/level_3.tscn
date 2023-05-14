@@ -13,7 +13,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StraightEnemy:position")
+tracks/0/path = NodePath("Node2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -25,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StraightEnemy2:position")
+tracks/1/path = NodePath("Node2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +42,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("StraightEnemy:position")
+tracks/0/path = NodePath("Node2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,7 +54,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("StraightEnemy2:position")
+tracks/1/path = NodePath("Node2D2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -150,11 +150,15 @@ position = Vector2(640, -164)
 [node name="Node2D" type="Node2D" parent="." index="7"]
 position = Vector2(0, -375)
 
-[node name="StraightEnemy" parent="Node2D" index="0" instance=ExtResource("5_8rx0d")]
+[node name="Node2D" type="Node2D" parent="Node2D" index="0"]
 position = Vector2(360, 0)
 
-[node name="StraightEnemy2" parent="Node2D" index="1" instance=ExtResource("5_8rx0d")]
+[node name="StraightEnemy" parent="Node2D/Node2D" index="0" instance=ExtResource("5_8rx0d")]
+
+[node name="Node2D2" type="Node2D" parent="Node2D" index="1"]
 position = Vector2(920, 0)
+
+[node name="StraightEnemy2" parent="Node2D/Node2D2" index="0" instance=ExtResource("5_8rx0d")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" index="2"]
 autoplay = "patrol"

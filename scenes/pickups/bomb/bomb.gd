@@ -22,6 +22,9 @@ func _input(event):
 
 
 func explode() -> void:
+	if Globals.stage_done or Globals.game_over:
+		return
+
 	animation_player.play("explode")
 	sfx.play()
 	exploded.emit(self)
@@ -39,11 +42,12 @@ func explode() -> void:
 
 	await animation_player.animation_finished
 	await sfx.finished
-	_deactivate()
+	
+	call_deferred("_deactivate")
 
 
 func _on_player_died():
-	_deactivate()
+	call_deferred("_deactivate")
 
 
 func _activate() -> void:

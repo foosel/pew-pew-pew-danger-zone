@@ -5,7 +5,7 @@ class_name Drone
 @export var radius = 64
 @export var health = 1
 @export var bullet_speed = 200
-@export var bullet_steering = 50
+@export var bullet_steering = 200
 @export var min_shot_interval = .2
 @export var max_shot_interval = .4
 @export var bullet_scene: PackedScene = load("res://scenes/bullet/drone_bullet.tscn") as PackedScene
@@ -24,6 +24,8 @@ var angle: float = 0
 
 
 func _ready() -> void:
+	Globals.stage_cleared.connect(_on_stage_cleared)
+	
 	center = position
 	shoot_timer.wait_time = randf_range(min_shot_interval, max_shot_interval)
 	_activate()
@@ -35,6 +37,9 @@ func _process(delta) -> void:
 
 
 func shoot() -> void:
+	if Globals.stage_done or Globals.game_over:
+		return
+
 	var closest_distance = -1
 	var closest_enemy = null
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
@@ -95,3 +100,7 @@ func _activate() -> void:
 func _deactivate() -> void:
 	Globals.drone_status.emit(false)
 	queue_free()
+
+
+func _on_stage_cleared(flag: bool) -> void:
+	despawn_timer.paused = flag
