@@ -71,7 +71,7 @@ autowrap_mode = 3
 
 [node name="New Game" type="Button" parent="Main/HBoxContainer"]
 layout_mode = 2
-text = "New Game"
+text = "New game"
 
 [node name="How To Play" type="Button" parent="Main/HBoxContainer"]
 layout_mode = 2

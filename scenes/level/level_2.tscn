@@ -257,10 +257,6 @@ libraries = {
 
 [node name="HealthPickup" parent="." index="11" instance=ExtResource("8_hv0h2")]
 position = Vector2(363, -777)
-healing_amount = 1
-replacement_points = 5
 
 [node name="HealthPickup2" parent="." index="12" instance=ExtResource("8_hv0h2")]
 position = Vector2(905, -777)
-healing_amount = 1
-replacement_points = 5

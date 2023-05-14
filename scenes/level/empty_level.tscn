@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://scenes/level/level.tscn" id="1_jkrir"]
 [ext_resource type="Texture2D" uid="uid://mxib76pe5a5i" path="res://assets/graphics/levels/boss_level.svg" id="2_wv28h"]
-[ext_resource type="PackedScene" path="res://scenes/pickups/bomb_pickup.tscn" id="3_i5h16"]
+[ext_resource type="PackedScene" uid="uid://c4i6kxe615rn" path="res://scenes/pickups/bomb_pickup.tscn" id="3_i5h16"]
 
 [node name="EmptyLevel" instance=ExtResource("1_jkrir")]
 
@@ -12,8 +12,6 @@ texture = ExtResource("2_wv28h")
 
 [node name="BombPickup" parent="." index="2" instance=ExtResource("3_i5h16")]
 position = Vector2(464, 183)
-replacement_points = 25
 
 [node name="BombPickup2" parent="." index="3" instance=ExtResource("3_i5h16")]
 position = Vector2(749, 188)
-replacement_points = 25
