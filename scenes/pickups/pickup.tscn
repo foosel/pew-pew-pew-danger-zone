@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg2b7v1iv7v8v"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cpn418mf3xh1w" path="res://assets/graphics/pickup_health.svg" id="1_70n2t"]
+[ext_resource type="Texture2D" uid="uid://cpn418mf3xh1w" path="res://assets/graphics/pickups/pickup_health.svg" id="1_70n2t"]
 [ext_resource type="Script" path="res://scenes/pickups/pickup.gd" id="1_862r2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_16du0"]

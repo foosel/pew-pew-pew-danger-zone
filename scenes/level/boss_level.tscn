@@ -1,12 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn33xe2y6kppj"]
+[gd_scene load_steps=12 format=3 uid="uid://copat8op10wcd"]
 
-[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_26n5x"]
-[ext_resource type="Texture2D" uid="uid://mxib76pe5a5i" path="res://assets/graphics/boss_level.svg" id="2_moiik"]
-[ext_resource type="PackedScene" uid="uid://bbv7hcqo3x0ro" path="res://scenes/pickups/shield_pickup.tscn" id="3_vyxv1"]
+[ext_resource type="PackedScene" path="res://scenes/level/level.tscn" id="1_26n5x"]
+[ext_resource type="Texture2D" uid="uid://mxib76pe5a5i" path="res://assets/graphics/levels/boss_level.svg" id="2_mlfj3"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/shield_pickup.tscn" id="3_vyxv1"]
 [ext_resource type="PackedScene" uid="uid://rgmn8uigxoms" path="res://scenes/pickups/health_pickup.tscn" id="4_o7x64"]
-[ext_resource type="PackedScene" uid="uid://swutg34po0wq" path="res://scenes/pickups/bomb_pickup.tscn" id="5_w51dp"]
-[ext_resource type="PackedScene" uid="uid://ceqo0i85uf16t" path="res://scenes/pickups/drone_pickup.tscn" id="6_o2vtg"]
-[ext_resource type="PackedScene" uid="uid://dgiyhe0u7y45d" path="res://scenes/enemy/boss_enemy.tscn" id="7_wdujc"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/bomb_pickup.tscn" id="5_w51dp"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/drone_pickup.tscn" id="6_o2vtg"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/boss_enemy.tscn" id="7_wdujc"]
 [ext_resource type="AudioStream" uid="uid://4g1ycapwwwxh" path="res://assets/music/DavidKBD - InterstellarPack - 08 - Synth Kobra.ogg" id="8_08pnt"]
 
 [sub_resource type="Animation" id="Animation_lnb4m"]
@@ -51,7 +51,7 @@ _data = {
 
 [node name="Background" parent="." index="0"]
 position = Vector2(640, 116)
-texture = ExtResource("2_moiik")
+texture = ExtResource("2_mlfj3")
 
 [node name="ShieldPickup" parent="." index="1" instance=ExtResource("3_vyxv1")]
 position = Vector2(319, 287)

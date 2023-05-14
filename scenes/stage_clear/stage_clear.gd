@@ -9,7 +9,6 @@ class_name StageClear
 
 
 func display(score: int, level: int) -> void:
-	Globals.stage_clear_showing = true
 	text.text = "Stage " + str(level) + " cleared!"
 	current_score.text = "Current score: " + str(score)
 	sfx.play()
@@ -19,4 +18,3 @@ func display(score: int, level: int) -> void:
 
 func remove() -> void:
 	animation.play_backwards("fade_in")
-	Globals.stage_clear_showing = false

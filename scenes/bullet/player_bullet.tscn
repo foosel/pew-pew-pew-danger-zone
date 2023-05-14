@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://brjlmeww2201m"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://biq5hbe0ajqyv" path="res://scenes/bullet/bullet.tscn" id="1_y6ept"]
-[ext_resource type="Texture2D" uid="uid://bixe6ro3doobn" path="res://assets/graphics/bullet_player.svg" id="2_gbcio"]
+[ext_resource type="PackedScene" path="res://scenes/bullet/bullet.tscn" id="1_y6ept"]
+[ext_resource type="Texture2D" uid="uid://bixe6ro3doobn" path="res://assets/graphics/player/bullet.svg" id="2_gbcio"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ol8nt"]
 size = Vector2(4, 12)

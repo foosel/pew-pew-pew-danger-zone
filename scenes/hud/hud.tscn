@@ -1,15 +1,17 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvxey18okvxek"]
+[gd_scene load_steps=19 format=3 uid="uid://kx4b310ygoha"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_vdakb"]
-[ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/empty_bar.svg" id="2_7h0kc"]
 [ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="2_24nue"]
-[ext_resource type="Texture2D" uid="uid://d2mvrn0e6bto5" path="res://assets/graphics/lives_bar.svg" id="3_i64v2"]
-[ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/health_bar.svg" id="3_u2q4l"]
-[ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/bullet_bar.svg" id="4_nna8r"]
+[ext_resource type="Texture2D" uid="uid://d2mvrn0e6bto5" path="res://assets/graphics/hud/lives_bar.svg" id="2_r4iay"]
+[ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/hud/empty_bar.svg" id="3_t2rb7"]
+[ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/hud/health_bar.svg" id="4_ajnmt"]
+[ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/hud/bullet_bar.svg" id="5_tiy8q"]
 [ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="7_2r67m"]
-[ext_resource type="Texture2D" uid="uid://b77w242v0xrue" path="res://assets/graphics/boss_bar_empty.svg" id="7_l8cnc"]
-[ext_resource type="Texture2D" uid="uid://q3rdi2qi66ws" path="res://assets/graphics/boss_bar_full.svg" id="8_5fo88"]
 [ext_resource type="AudioStream" uid="uid://b00oaygixknca" path="res://assets/sfxr/alarm2.sfxr" id="8_xuaym"]
+[ext_resource type="Texture2D" uid="uid://b77w242v0xrue" path="res://assets/graphics/hud/boss_bar_empty.svg" id="9_ycyvq"]
+[ext_resource type="Texture2D" uid="uid://q3rdi2qi66ws" path="res://assets/graphics/hud/boss_bar_full.svg" id="10_2gq5d"]
+[ext_resource type="Texture2D" uid="uid://dthnvrwy3j3g1" path="res://assets/graphics/hud/controls_move_and_shoot.png" id="11_xt4re"]
+[ext_resource type="Texture2D" uid="uid://bdk00shktgcev" path="res://assets/graphics/hud/controls_bomb_and_pause.png" id="12_3ap2j"]
 
 [sub_resource type="Animation" id="Animation_3wkex"]
 length = 0.001
@@ -72,6 +74,42 @@ _data = {
 "flash": SubResource("Animation_1xjl0")
 }
 
+[sub_resource type="Animation" id="Animation_e4jmp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.501961)]
+}
+
+[sub_resource type="Animation" id="Animation_p7unn"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.501961), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0k3iw"]
+_data = {
+"RESET": SubResource("Animation_e4jmp"),
+"fade_out": SubResource("Animation_p7unn")
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_vdakb")
 
@@ -100,7 +138,7 @@ size_flags_horizontal = 8
 max_value = 3.0
 value = 3.0
 fill_mode = 1
-texture_progress = ExtResource("3_i64v2")
+texture_progress = ExtResource("2_r4iay")
 
 [node name="HealthBar" type="TextureProgressBar" parent="LeftBar/MarginContainer"]
 layout_mode = 2
@@ -109,8 +147,8 @@ size_flags_vertical = 8
 max_value = 5.0
 value = 3.0
 fill_mode = 3
-texture_under = ExtResource("2_7h0kc")
-texture_progress = ExtResource("3_u2q4l")
+texture_under = ExtResource("3_t2rb7")
+texture_progress = ExtResource("4_ajnmt")
 
 [node name="RightBar" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(252, 0)
@@ -144,8 +182,8 @@ size_flags_vertical = 8
 max_value = 5.0
 value = 1.0
 fill_mode = 3
-texture_under = ExtResource("2_7h0kc")
-texture_progress = ExtResource("4_nna8r")
+texture_under = ExtResource("3_t2rb7")
+texture_progress = ExtResource("5_tiy8q")
 
 [node name="MarginContainer" type="MarginContainer" parent="RightBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -172,7 +210,7 @@ text = "Drone"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_24nue")
 theme_override_font_sizes/font_size = 32
-text = "Bomb (Shift)"
+text = "Bomb"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RightBar/MarginContainer"]
 layout_mode = 2
@@ -229,5 +267,35 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 value = 25.0
-texture_under = ExtResource("7_l8cnc")
-texture_progress = ExtResource("8_5fo88")
+texture_under = ExtResource("9_ycyvq")
+texture_progress = ExtResource("10_2gq5d")
+
+[node name="ControlsHelp" type="MarginContainer" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 268
+theme_override_constants/margin_right = 268
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ControlsHelp"]
+layout_mode = 2
+texture = ExtResource("11_xt4re")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/ControlsHelp"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("12_3ap2j")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/ControlsHelp"]
+libraries = {
+"": SubResource("AnimationLibrary_0k3iw")
+}
+
+[node name="ControlsHelpTimer" type="Timer" parent="MarginContainer/ControlsHelp"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="MarginContainer/ControlsHelp/ControlsHelpTimer" to="." method="_on_controls_help_timer_timeout"]

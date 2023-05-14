@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://0k410tacvxt0"]
 
-[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_npt5y"]
-[ext_resource type="Texture2D" uid="uid://cv15f0o7hspux" path="res://assets/graphics/enemy_circle.svg" id="2_hd31q"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_npt5y"]
+[ext_resource type="Texture2D" uid="uid://cv15f0o7hspux" path="res://assets/graphics/enemies/enemy_circle.svg" id="2_1bmmh"]
 [ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="3_3c8us"]
 [ext_resource type="PackedScene" uid="uid://0ou2ap3t0dj" path="res://scenes/bullet_emitter/enemy_bullet_emitter.tscn" id="3_4q1j2"]
 
@@ -11,10 +11,10 @@ radius = 16.0
 [node name="CircularEnemy" instance=ExtResource("1_npt5y")]
 
 [node name="Shadow" parent="." index="0"]
-texture = ExtResource("2_hd31q")
+texture = ExtResource("2_1bmmh")
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_hd31q")
+texture = ExtResource("2_1bmmh")
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_gryk0")

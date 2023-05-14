@@ -67,6 +67,9 @@ func _physics_process(_delta):
 
 
 func shoot():
+	if Globals.stage_done or Globals.game_over:
+		return
+
 	var shots = []
 	
 	for emitter in bullet_emitters:
@@ -79,6 +82,9 @@ func shoot():
 
 func hit() -> void:
 	if health <= 0:
+		return
+		
+	if Globals.stage_done or Globals.game_over:
 		return
 
 	health -= 1
@@ -122,6 +128,7 @@ func add_points(amount: int) -> void:
 func sync_bullet_fire_interval() -> void:
 	bullet_fire_interval = bullet_fire_interval_low + (FULL_HEALTH - health - 1) * bullet_fire_interval_step
 	print("Firing every " + str(bullet_fire_interval) + "s")
+
 
 func _on_hurtbox_body_entered(body):
 	if body is Bullet:

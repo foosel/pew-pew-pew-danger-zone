@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://da25xie0rg17k"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dg2b7v1iv7v8v" path="res://scenes/pickups/pickup.tscn" id="1_htqrp"]
-[ext_resource type="Texture2D" uid="uid://cnutbfui6ljl5" path="res://assets/graphics/pickup_point.svg" id="2_56m01"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/pickup.tscn" id="1_htqrp"]
+[ext_resource type="Texture2D" uid="uid://cnutbfui6ljl5" path="res://assets/graphics/pickups/pickup_point.svg" id="2_56m01"]
 [ext_resource type="Script" path="res://scenes/pickups/points_pickup.gd" id="2_g7shb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x2nst"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6yurhkm83qro"]
+[gd_scene load_steps=15 format=3 uid="uid://ccq3fmvr1lm2u"]
 
-[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
+[ext_resource type="PackedScene" path="res://scenes/level/level.tscn" id="1_rl17j"]
 [ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
-[ext_resource type="Texture2D" uid="uid://rvwmuav18dyb" path="res://assets/graphics/level2.svg" id="2_mmeqy"]
+[ext_resource type="Texture2D" uid="uid://rvwmuav18dyb" path="res://assets/graphics/levels/level2.svg" id="2_y43kx"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
-[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/straight_movement.gd" id="5_m3esb"]
 [ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
 [ext_resource type="PackedScene" uid="uid://rgmn8uigxoms" path="res://scenes/pickups/health_pickup.tscn" id="8_hv0h2"]
@@ -137,7 +137,7 @@ _data = {
 
 [node name="Background" parent="." index="0"]
 position = Vector2(640, -881)
-texture = ExtResource("2_mmeqy")
+texture = ExtResource("2_y43kx")
 
 [node name="Exit" parent="Background" index="0"]
 position = Vector2(-1540, 314)

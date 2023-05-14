@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://immbwes1pjvs"]
+[gd_scene load_steps=14 format=3 uid="uid://bbspw3hh2olbu"]
 
-[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
+[ext_resource type="PackedScene" path="res://scenes/level/level.tscn" id="1_rl17j"]
 [ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
-[ext_resource type="Texture2D" uid="uid://cts2u0su8of86" path="res://assets/graphics/level3.svg" id="2_ahiac"]
+[ext_resource type="Texture2D" uid="uid://cts2u0su8of86" path="res://assets/graphics/levels/level3.svg" id="2_wtkqi"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
-[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
 [ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/circle_target_behaviour.gd" id="6_vt5ra"]
 
@@ -70,6 +70,21 @@ _data = {
 "patrol": SubResource("Animation_0irku")
 }
 
+[sub_resource type="Animation" id="Animation_wskgr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_ctdyl"]
 resource_name = "patrol"
 length = 2.0
@@ -87,21 +102,6 @@ tracks/0/keys = {
 "values": [Vector2(-64, 0), Vector2(64, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_wskgr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_avy41"]
 _data = {
 "RESET": SubResource("Animation_wskgr"),
@@ -112,7 +112,7 @@ _data = {
 
 [node name="Background" parent="." index="0"]
 position = Vector2(640, -681)
-texture = ExtResource("2_ahiac")
+texture = ExtResource("2_wtkqi")
 
 [node name="Exit" parent="Background" index="0"]
 position = Vector2(0, 424)

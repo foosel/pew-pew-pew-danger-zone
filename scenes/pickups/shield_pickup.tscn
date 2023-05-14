@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbv7hcqo3x0ro"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dg2b7v1iv7v8v" path="res://scenes/pickups/pickup.tscn" id="1_eoex7"]
-[ext_resource type="Texture2D" uid="uid://bbngfqmushm6i" path="res://assets/graphics/pickup_shield.svg" id="2_2x021"]
+[ext_resource type="PackedScene" path="res://scenes/pickups/pickup.tscn" id="1_eoex7"]
+[ext_resource type="Texture2D" uid="uid://bbngfqmushm6i" path="res://assets/graphics/pickups/pickup_shield.svg" id="2_2x021"]
 [ext_resource type="Script" path="res://scenes/pickups/shield_pickup.gd" id="2_fkoo7"]
 
 [node name="ShieldPickup" instance=ExtResource("1_eoex7")]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://1qwr33bi2h1h"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scenes/pickups/shield/shield.gd" id="1_8jog7"]
-[ext_resource type="Texture2D" uid="uid://d1dlrssbgx0mh" path="res://assets/graphics/shield.svg" id="1_vqoqj"]
+[ext_resource type="Texture2D" uid="uid://d1dlrssbgx0mh" path="res://assets/graphics/pickups/shield.svg" id="1_vqoqj"]
 [ext_resource type="AudioStream" uid="uid://bhyuw4sjujxp3" path="res://assets/sfxr/shield_down.sfxr" id="3_7ibym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i08ha"]

@@ -5,6 +5,7 @@ class_name Game
 @onready var player = $Player as Player
 @onready var bullet_manager = $BulletManager as BulletManager
 @onready var respawn_timer = $RespawnTimer as Timer
+@onready var level_done_check_timer = $LevelDoneCheckTimer as Timer
 @onready var camera = $Camera as ShakeableCamera
 @onready var focus_point = $FocusPoint as Node2D
 @onready var hud = $HUD as HUD
@@ -21,7 +22,7 @@ var stats_enemies_killed = 0
 
 var current_level = 0
 var levels = [
-	#"empty_level",
+#	"empty_level",
 	"level_1",
 	"level_2",
 	"level_3",
@@ -30,9 +31,6 @@ var levels = [
 var level: Level = null
 var level_size = Vector2.ZERO
 var level_exit_reached = false
-
-var is_level_complete = false
-var is_game_over = false
 
 
 func _ready():
@@ -44,10 +42,10 @@ func _input(event) -> void:
 		get_tree().paused = true
 		pause_menu.popup_centered()
 
-	if is_game_over and event.is_action_pressed("ui_accept"):
+	if Globals.game_over and event.is_action_pressed("ui_accept"):
 		Globals.main_menu()
 	
-	if is_level_complete and event.is_action_pressed("ui_accept"):
+	if Globals.stage_done and event.is_action_pressed("ui_accept"):
 		call_deferred("load_level", current_level + 1)
 		stage_clear.remove()
 		stage_clear.hide()
@@ -148,7 +146,8 @@ func _on_player_drone_died(drone):
 func _on_level_player_reached_exit():
 	print("Level exit reached (Area)")
 	level_exit_reached = true
-	check_level_done()
+	if not check_level_done():
+		level_done_check_timer.start()
 
 
 func _on_pause_menu_exit_game():
@@ -190,8 +189,8 @@ func _add_points_pickups(enemy: Enemy, source: String) -> void:
 
 
 func start_game() -> void:
-	Globals.stage_clear_showing = false
-	Globals.game_over_showing = false
+	Globals.stage_done = false
+	Globals.game_over = false
 	load_level()
 	sync_hud()
 
@@ -219,7 +218,7 @@ func load_level(index = 0) -> void:
 	
 	level_size = level.get_level_size()
 	level_exit_reached = false
-	is_level_complete = false
+	Globals.stage_done = false
 	Globals.scroll_speed = level.scroll_speed
 	level.player_reached_exit.connect(_on_level_player_reached_exit)
 	connect_enemies(level.get_enemies())
@@ -267,15 +266,16 @@ func sync_hud() -> void:
 	hud.set_lives(lives)
 
 
-func check_level_done() -> void:
+func check_level_done() -> bool:
 	if not level_exit_reached:
-		return
+		return false
 	if level.get_enemies().size() > 0:
-		return
-	if is_level_complete:
-		return
+		return false
+	if Globals.stage_done:
+		return true
 	
-	is_level_complete = true
+	Globals.stage_done = true
+	level_done_check_timer.stop()
 	
 	for node in get_tree().get_nodes_in_group("Pickup"):
 		if not node is Pickup:
@@ -292,6 +292,8 @@ func check_level_done() -> void:
 		stage_clear.display(score, current_level + 1)
 	else:
 		call_deferred("load_level", current_level + 1)
+	
+	return true
 
 
 func trigger_game_over(won: bool) -> void:
@@ -299,7 +301,11 @@ func trigger_game_over(won: bool) -> void:
 	if is_highscore:
 		Globals.high_score = score
 		Globals.write_save_game()
-	is_game_over = true
+	Globals.game_over = true
 	game_over.show()
 	game_over.display(score, is_highscore, won, stats_shots_fired, stats_enemies_killed)
 
+
+
+func _on_level_done_check_timer_timeout():
+	call_deferred("check_level_done")

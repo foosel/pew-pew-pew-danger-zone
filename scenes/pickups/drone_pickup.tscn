@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceqo0i85uf16t"]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" uid="uid://dg2b7v1iv7v8v" path="res://scenes/pickups/pickup.tscn" id="1_tuphn"]
 [ext_resource type="Script" path="res://scenes/pickups/drone_pickup.gd" id="2_calar"]
-[ext_resource type="Texture2D" uid="uid://cffsam23xdvsb" path="res://assets/graphics/pickup_drone.svg" id="2_fhwfq"]
+[ext_resource type="Texture2D" uid="uid://cffsam23xdvsb" path="res://assets/graphics/pickups/pickup_drone.svg" id="2_fhwfq"]
 
 [node name="DronePickup" instance=ExtResource("1_tuphn")]
 script = ExtResource("2_calar")

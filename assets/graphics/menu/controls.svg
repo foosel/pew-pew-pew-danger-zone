@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128.37679mm"
+   height="24.527843mm"
+   viewBox="0 0 128.37679 24.527844"
+   version="1.1"
+   id="svg7314"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="controls.svg"
+   inkscape:export-filename="controls.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7316"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.0416192"
+     inkscape:cx="178.39385"
+     inkscape:cy="39.835519"
+     inkscape:window-width="3072"
+     inkscape:window-height="1630"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g6171-6-8" />
+  <defs
+     id="defs7311" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-60.497353,-162.02957)">
+    <rect
+       style="display:none;fill:#1a1932;stroke-width:0.529164;stroke-linejoin:round"
+       id="rect7487"
+       width="132.27888"
+       height="43.727726"
+       x="58.951942"
+       y="160.30927" />
+    <g
+       id="g6153"
+       inkscape:label="Move keys"
+       transform="translate(7.5806865,-569.80793)"
+       inkscape:export-filename="controls_move.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+         x="66.190987"
+         y="756.25354"
+         id="text5997"
+         inkscape:label="Move"><tspan
+           sodipodi:role="line"
+           id="tspan5995"
+           style="stroke-width:0.529164"
+           x="66.190987"
+           y="756.25354">Move</tspan></text>
+      <g
+         id="g5985"
+         inkscape:label="WASD">
+        <g
+           id="g5692-5-6"
+           transform="translate(-5.7589236,2.9335477)"
+           inkscape:label="D">
+          <rect
+             style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064-4-8"
+             width="7.9375024"
+             height="7.9375029"
+             x="76.931839"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="80.872368"
+             y="744.19336"
+             id="text5483-7-8"><tspan
+               sodipodi:role="line"
+               id="tspan5481-4-4"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="80.872368"
+               y="744.19336">D</tspan></text>
+        </g>
+        <g
+           id="g5692-5"
+           transform="translate(-14.754757,2.9335476)"
+           inkscape:label="S">
+          <rect
+             style="display:inline;fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064-4"
+             width="7.9375024"
+             height="7.9375029"
+             x="76.931839"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="80.900589"
+             y="744.19336"
+             id="text5483-7"><tspan
+               sodipodi:role="line"
+               id="tspan5481-4"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="80.900589"
+               y="744.19336">S</tspan></text>
+        </g>
+        <g
+           id="g5692-5-3"
+           transform="translate(-23.75059,2.9335476)"
+           inkscape:label="A">
+          <rect
+             style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064-4-0"
+             width="7.9375024"
+             height="7.9375029"
+             x="76.931839"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="80.900589"
+             y="744.19336"
+             id="text5483-7-7"><tspan
+               sodipodi:role="line"
+               id="tspan5481-4-8"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="80.900589"
+               y="744.19336">A</tspan></text>
+        </g>
+        <g
+           id="g5692"
+           transform="translate(-14.754757,-6.0622857)"
+           inkscape:label="W">
+          <rect
+             style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064"
+             width="7.9375024"
+             height="7.9375029"
+             x="76.931839"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="80.900589"
+             y="744.19336"
+             id="text5483"><tspan
+               sodipodi:role="line"
+               id="tspan5481"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="80.900589"
+               y="744.19336">W</tspan></text>
+        </g>
+      </g>
+    </g>
+    <g
+       id="g6171"
+       inkscape:label="Shoot keys"
+       transform="translate(7.5806865,-569.80793)"
+       inkscape:export-filename="controls_shoot.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <g
+         id="g5692-1"
+         transform="translate(13.659372,2.9335482)"
+         inkscape:label="Space">
+        <rect
+           style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529165;stroke-linejoin:round;stroke-dasharray:none"
+           id="rect5064-49"
+           width="24.870834"
+           height="7.9375029"
+           x="74.976044"
+           y="738.16437"
+           rx="2.1166666"
+           ry="2.1166666" />
+        <text
+           xml:space="preserve"
+           style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+           x="87.448151"
+           y="744.16327"
+           id="text5483-2"><tspan
+             sodipodi:role="line"
+             id="tspan5481-0"
+             style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+             x="87.448151"
+             y="744.16327">Space</tspan></text>
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+         x="101.10188"
+         y="756.3089"
+         id="text6157"
+         inkscape:label="Shoot"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.529164"
+           x="101.10188"
+           y="756.3089"
+           id="tspan6159">Shoot</tspan></text>
+    </g>
+    <g
+       id="g6171-6"
+       inkscape:label="Bomb keys"
+       transform="translate(41.753427,-569.89835)"
+       inkscape:export-filename="controls_bomb.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <g
+         id="g9020">
+        <g
+           id="g5692-1-8"
+           transform="translate(13.659372,2.9335482)"
+           inkscape:label="Shift">
+          <rect
+             style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529165;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064-49-9"
+             width="24.870834"
+             height="7.9375029"
+             x="74.976044"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="87.442505"
+             y="744.32318"
+             id="text5483-2-2"><tspan
+               sodipodi:role="line"
+               id="tspan5481-0-6"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="87.442505"
+               y="744.32318">Shift</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+           x="101.0539"
+           y="756.3089"
+           id="text6157-6"
+           inkscape:label="Shoot"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.529164"
+             x="101.0539"
+             y="756.3089"
+             id="tspan6159-4">Bomb</tspan></text>
+      </g>
+    </g>
+    <g
+       id="g6171-6-8"
+       inkscape:label="Pause keys"
+       transform="translate(75.103306,-550.3193)"
+       inkscape:export-filename="controls_move_and_shoot.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <g
+         id="g9012"
+         transform="translate(0,-19.579173)">
+        <g
+           id="g5692-1-8-7"
+           transform="translate(13.659372,2.9335482)"
+           inkscape:label="Shift">
+          <rect
+             style="fill:#3d3d3d;stroke:#272727;stroke-width:0.529165;stroke-linejoin:round;stroke-dasharray:none"
+             id="rect5064-49-9-1"
+             width="24.870834"
+             height="7.9375029"
+             x="74.976044"
+             y="738.16437"
+             rx="2.1166666"
+             ry="2.1166666" />
+          <text
+             xml:space="preserve"
+             style="font-weight:bold;font-size:5.64444px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#3d3d3d;stroke:#272727;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+             x="87.442505"
+             y="744.32318"
+             id="text5483-2-2-7"><tspan
+               sodipodi:role="line"
+               id="tspan5481-0-6-2"
+               style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164"
+               x="87.442505"
+               y="744.32318">ESC</tspan></text>
+        </g>
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+           x="101.0539"
+           y="756.3089"
+           id="text6157-6-7"
+           inkscape:label="Shoot"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.529164"
+             x="101.0539"
+             y="756.3089"
+             id="tspan6159-4-2">Pause</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

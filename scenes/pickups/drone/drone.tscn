@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1n5vj37qe505"]
+[gd_scene load_steps=5 format=3 uid="uid://dubo8fqvnsd47"]
 
 [ext_resource type="Script" path="res://scenes/pickups/drone/drone.gd" id="1_enu7v"]
-[ext_resource type="Texture2D" uid="uid://bhde3ienwfwyr" path="res://assets/graphics/drone.svg" id="1_oa5md"]
+[ext_resource type="Texture2D" uid="uid://bhde3ienwfwyr" path="res://assets/graphics/pickups/drone.svg" id="2_8fmlb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sv0j4"]
 
@@ -21,7 +21,7 @@ one_shot = true
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_oa5md")
+texture = ExtResource("2_8fmlb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sv0j4")

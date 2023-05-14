@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgiyhe0u7y45d"]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_b7dm4"]
 [ext_resource type="Script" path="res://scenes/enemy/boss_enemy.gd" id="2_18fqs"]
-[ext_resource type="Texture2D" uid="uid://caq7masahr87v" path="res://assets/graphics/boss.svg" id="2_njrvk"]
-[ext_resource type="Texture2D" uid="uid://c8s63knenmw8h" path="res://assets/graphics/boss_shield.svg" id="3_3gylr"]
+[ext_resource type="Texture2D" uid="uid://caq7masahr87v" path="res://assets/graphics/enemies/boss.svg" id="2_njrvk"]
+[ext_resource type="Texture2D" uid="uid://c8s63knenmw8h" path="res://assets/graphics/enemies/boss_shield.svg" id="3_3gylr"]
 [ext_resource type="PackedScene" uid="uid://0ou2ap3t0dj" path="res://scenes/bullet_emitter/enemy_bullet_emitter.tscn" id="3_a51dw"]
 [ext_resource type="PackedScene" uid="uid://csau3xew78k2o" path="res://scenes/bullet_pattern/circular_bullet_pattern.tscn" id="4_4skqp"]
 [ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_msh04"]

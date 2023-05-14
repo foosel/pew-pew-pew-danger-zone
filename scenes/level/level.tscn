@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvqm4ga3k8usn"]
+[gd_scene load_steps=7 format=3]
 
-[ext_resource type="Texture2D" uid="uid://842pg1ky7wq5" path="res://assets/graphics/level1.svg" id="1_04t85"]
+[ext_resource type="Texture2D" uid="uid://842pg1ky7wq5" path="res://assets/graphics/levels/level1.svg" id="1_04t85"]
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_mb5cb"]
 [ext_resource type="AudioStream" uid="uid://h5waakfsiklx" path="res://assets/music/DavidKBD - InterstellarPack - 09 - Spiral of Plasma.ogg" id="3_mwg61"]
 

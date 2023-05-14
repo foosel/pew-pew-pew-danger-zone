@@ -19,8 +19,9 @@ var save_game_path = "user://save_game.dat"
 
 var current_scene = null
 
-var stage_clear_showing = false
-var game_over_showing = false
+
+var stage_done = false
+var game_over = false
 
 
 func _ready() -> void:
@@ -63,7 +64,7 @@ func in_visible_viewport_y(pos: Vector2) -> bool:
 
 
 func player_controls_enabled() -> bool:
-	return not game_over_showing and not stage_clear_showing
+	return not game_over and not stage_done
 
 
 func load_save_game() -> void:

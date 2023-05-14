@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://tg04bdkgpfyo"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="PackedScene" uid="uid://chic3e5qr72cu" path="res://scenes/enemy/enemy.tscn" id="1_x84e7"]
-[ext_resource type="Texture2D" uid="uid://djt1ei5hr7ev6" path="res://assets/graphics/enemy_triangle.svg" id="2_iunhj"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/enemy.tscn" id="1_x84e7"]
+[ext_resource type="Texture2D" uid="uid://djt1ei5hr7ev6" path="res://assets/graphics/enemies/enemy_triangle.svg" id="2_iunhj"]
 [ext_resource type="PackedScene" uid="uid://0ou2ap3t0dj" path="res://scenes/bullet_emitter/enemy_bullet_emitter.tscn" id="3_84seb"]
 [ext_resource type="PackedScene" uid="uid://bk8xhvidu2l88" path="res://scenes/bullet_pattern/straight_bullet_pattern.tscn" id="3_cufwe"]
 

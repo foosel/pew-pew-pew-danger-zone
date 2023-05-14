@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dwh0uleq84d4k"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_irmuf"]
-[ext_resource type="PackedScene" uid="uid://c1nj5wjj0bnap" path="res://scenes/player/player.tscn" id="1_qh5ax"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_qh5ax"]
 [ext_resource type="Script" path="res://scenes/bullet_manager/bullet_manager.gd" id="5_7ft26"]
-[ext_resource type="PackedScene" uid="uid://bvxey18okvxek" path="res://scenes/hud/hud.tscn" id="7_7p1ar"]
+[ext_resource type="PackedScene" uid="uid://kx4b310ygoha" path="res://scenes/hud/hud.tscn" id="7_7p1ar"]
 [ext_resource type="PackedScene" uid="uid://dvogerkbh32v8" path="res://scenes/pause_menu/pause_menu.tscn" id="7_7rbag"]
 [ext_resource type="PackedScene" uid="uid://bos43k0dtskkv" path="res://scenes/camera/shakeable_camera.tscn" id="7_gys52"]
 [ext_resource type="PackedScene" uid="uid://codck442xsoqk" path="res://scenes/game_over/game_over.tscn" id="7_s1g1g"]
@@ -15,6 +15,8 @@ script = ExtResource("1_irmuf")
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="LevelDoneCheckTimer" type="Timer" parent="."]
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("5_7ft26")
@@ -46,6 +48,7 @@ visible = false
 visible = false
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="LevelDoneCheckTimer" to="." method="_on_level_done_check_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="drone_died" from="Player" to="." method="_on_player_drone_died"]
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]

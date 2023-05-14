@@ -17,6 +17,10 @@ class_name HUD
 @onready var bomb_label = $RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer/BombLabel as Label
 
 
+@onready var controls_help = $MarginContainer/ControlsHelp as MarginContainer
+@onready var controls_help_animation = $MarginContainer/ControlsHelp/AnimationPlayer as AnimationPlayer
+@onready var controls_help_timer = $MarginContainer/ControlsHelp/Timer as Timer
+
 
 var active_color = Color("#ffffff")
 var inactive_color = Color("#3d3d3d")
@@ -29,6 +33,8 @@ func _ready() -> void:
 	var bar_size = Globals.visible_viewport.position.x
 	left_bar.custom_minimum_size = Vector2(bar_size, 0)
 	right_bar.custom_minimum_size = Vector2(bar_size, 0)
+	controls_help.add_theme_constant_override("margin_left", bar_size + 16)
+	controls_help.add_theme_constant_override("margin_right", bar_size + 16)
 	
 	Globals.shield_status.connect(_on_shield_status)
 	Globals.drone_status.connect(_on_drone_status)
@@ -98,3 +104,7 @@ func _on_drone_status(state: bool) -> void:
 func _on_bomb_status(state: bool) -> void:
 	print("Bomb status: " + str(state))
 	bomb_label.modulate = active_color if state else inactive_color
+
+
+func _on_controls_help_timer_timeout():
+	controls_help_animation.play("fade_out")

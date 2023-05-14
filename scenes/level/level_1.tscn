@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://cfppke4ifcwab"]
 
-[ext_resource type="PackedScene" uid="uid://bvqm4ga3k8usn" path="res://scenes/level/level.tscn" id="1_rl17j"]
+[ext_resource type="PackedScene" path="res://scenes/level/level.tscn" id="1_rl17j"]
 [ext_resource type="PackedScene" uid="uid://0k410tacvxt0" path="res://scenes/enemy/circular_enemy.tscn" id="2_48crl"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/follow_player_behaviour.gd" id="3_anepg"]
-[ext_resource type="PackedScene" uid="uid://tg04bdkgpfyo" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/straight_enemy.tscn" id="5_8rx0d"]
 [ext_resource type="Script" path="res://scenes/enemy/behaviour/straight_movement.gd" id="5_m3esb"]
 [ext_resource type="PackedScene" uid="uid://cdpcc0pgxdpak" path="res://scenes/enemy/rectangular_enemy.tscn" id="6_dyy6o"]
 

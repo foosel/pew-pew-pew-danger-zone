@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="61.150711mm"
+   height="16.39897mm"
+   viewBox="0 0 61.150713 16.39897"
+   version="1.1"
+   id="svg7314"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="ships.svg"
+   inkscape:export-filename="ships.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7316"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="4.0416192"
+     inkscape:cx="47.258287"
+     inkscape:cy="-21.031175"
+     inkscape:window-width="3072"
+     inkscape:window-height="1630"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs7311" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-67.233996,-170.10308)">
+    <rect
+       style="display:none;fill:#1a1932;stroke-width:0.529164;stroke-linejoin:round"
+       id="rect7487"
+       width="132.27888"
+       height="43.727726"
+       x="58.951942"
+       y="160.30927" />
+    <g
+       id="g6153"
+       inkscape:label="Move keys"
+       transform="translate(5.9931864,-569.80793)"
+       inkscape:export-filename="controls_move.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+         x="66.190987"
+         y="756.25354"
+         id="text5997"
+         inkscape:label="Move"><tspan
+           sodipodi:role="line"
+           style="stroke-width:0.529164"
+           x="66.190987"
+           y="756.25354"
+           id="tspan10573">You</tspan></text>
+      <g
+         id="g6604"
+         transform="translate(-29.695239,43.090141)"
+         inkscape:label="L Stick" />
+    </g>
+    <g
+       id="g6171-6"
+       inkscape:label="Bomb keys"
+       transform="translate(8.4159243,-569.89835)"
+       inkscape:export-filename="controls_bomb.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"
+       style="display:inline">
+      <g
+         id="g9020">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.64444px;font-family:'JetBrains Mono';-inkscape-font-specification:'JetBrains Mono Bold';text-align:center;text-anchor:middle;fill:#b4b4b4;stroke:none;stroke-width:0.529164;stroke-linejoin:round;stroke-dasharray:none"
+           x="101.0539"
+           y="756.3089"
+           id="text6157-6"
+           inkscape:label="Shoot"><tspan
+             sodipodi:role="line"
+             style="stroke-width:0.529164"
+             x="101.0539"
+             y="756.3089"
+             id="tspan10577">Enemies</tspan></text>
+      </g>
+    </g>
+    <path
+       style="fill:#0098dc;stroke:#0069aa;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 72.57482,170.43772 -3.968773,7.93751 h 7.937542 z"
+       id="path236"
+       sodipodi:nodetypes="cccc" />
+    <circle
+       style="fill:#c42430;stroke:#891e2b;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+       id="path2121"
+       cx="109.87523"
+       cy="174.79953"
+       r="3.9687498" />
+    <rect
+       style="fill:#c42430;stroke:#891e2b;stroke-width:0.513374;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+       id="rect2042"
+       width="7.9532919"
+       height="7.9532924"
+       x="120.17473"
+       y="170.47331" />
+    <path
+       style="fill:#c42430;stroke:#891e2b;stroke-width:0.513132;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+       d="m 95.649173,178.31321 3.97679,-7.95356 h -7.953567 z"
+       id="path236-7"
+       sodipodi:nodetypes="cccc" />
+  </g>
+</svg>
