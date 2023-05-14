@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dapmgkckjmta"]
 
-[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="1_1kruj"]
+[ext_resource type="Theme" path="res://assets/theme.tres" id="1_1kruj"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="2_1x5ao"]
 [ext_resource type="Texture2D" uid="uid://bgjqeuoxx8eru" path="res://assets/graphics/menu/menu_background.png" id="3_udeko"]
-[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="4_2ui0k"]
 [ext_resource type="Texture2D" uid="uid://ctek363x3ioqa" path="res://assets/graphics/menu/menu_foreground.png" id="4_h5785"]
+[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/DIGITAL-7/digital-7.ttf" id="5_7136a"]
 [ext_resource type="Texture2D" uid="uid://b4x8cclnaj550" path="res://assets/graphics/menu/ships.png" id="6_a1ycb"]
 [ext_resource type="AudioStream" uid="uid://byltfj35bv2vd" path="res://assets/music/DavidKBD - Eternity Pack - 11 - Screams in the Distance - loop.ogg" id="6_x7oih"]
 [ext_resource type="Texture2D" uid="uid://cwyaed1o3men7" path="res://assets/graphics/menu/controls.png" id="7_p3rcw"]
@@ -50,7 +50,7 @@ theme_override_constants/margin_bottom = 64
 [node name="Highscore" type="Label" parent="Main"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("4_2ui0k")
+theme_override_fonts/font = ExtResource("5_7136a")
 text = "High Score: "
 horizontal_alignment = 2
 

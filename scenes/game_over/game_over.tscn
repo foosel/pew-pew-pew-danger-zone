@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://codck442xsoqk"]
 
-[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="1_t86w4"]
+[ext_resource type="Theme" path="res://assets/theme.tres" id="1_t86w4"]
 [ext_resource type="Script" path="res://scenes/game_over/game_over.gd" id="1_v0at3"]
 
 [sub_resource type="Animation" id="Animation_gxmu4"]

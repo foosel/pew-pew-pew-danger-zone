@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3 uid="uid://kx4b310ygoha"]
 
 [ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_vdakb"]
-[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/digital-7.ttf" id="2_24nue"]
 [ext_resource type="Texture2D" uid="uid://d2mvrn0e6bto5" path="res://assets/graphics/hud/lives_bar.svg" id="2_r4iay"]
 [ext_resource type="Texture2D" uid="uid://cgci35i7t457w" path="res://assets/graphics/hud/empty_bar.svg" id="3_t2rb7"]
 [ext_resource type="Texture2D" uid="uid://cxu5jutdonnd0" path="res://assets/graphics/hud/health_bar.svg" id="4_ajnmt"]
 [ext_resource type="Texture2D" uid="uid://ubigbu3ea7qx" path="res://assets/graphics/hud/bullet_bar.svg" id="5_tiy8q"]
-[ext_resource type="Theme" uid="uid://c6vj3xhhc2msf" path="res://assets/theme.tres" id="7_2r67m"]
+[ext_resource type="FontFile" uid="uid://bbkqyfn0fntcr" path="res://assets/fonts/DIGITAL-7/digital-7.ttf" id="6_83lqv"]
+[ext_resource type="Theme" path="res://assets/theme.tres" id="7_2r67m"]
 [ext_resource type="AudioStream" uid="uid://b00oaygixknca" path="res://assets/sfxr/alarm2.sfxr" id="8_xuaym"]
 [ext_resource type="Texture2D" uid="uid://b77w242v0xrue" path="res://assets/graphics/hud/boss_bar_empty.svg" id="9_ycyvq"]
 [ext_resource type="Texture2D" uid="uid://q3rdi2qi66ws" path="res://assets/graphics/hud/boss_bar_full.svg" id="10_2gq5d"]
@@ -196,19 +196,19 @@ size_flags_vertical = 8
 
 [node name="ShieldLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_fonts/font = ExtResource("6_83lqv")
 theme_override_font_sizes/font_size = 32
 text = "Shield"
 
 [node name="DroneLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_fonts/font = ExtResource("6_83lqv")
 theme_override_font_sizes/font_size = 32
 text = "Drone"
 
 [node name="BombLabel" type="Label" parent="RightBar/MarginContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_fonts/font = ExtResource("6_83lqv")
 theme_override_font_sizes/font_size = 32
 text = "Bomb"
 
@@ -218,7 +218,7 @@ layout_mode = 2
 [node name="ScoreLabel" type="Label" parent="RightBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_fonts/font = ExtResource("6_83lqv")
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 horizontal_alignment = 1
@@ -228,7 +228,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("2_24nue")
+theme_override_fonts/font = ExtResource("6_83lqv")
 theme_override_font_sizes/font_size = 32
 text = "FPS"
 

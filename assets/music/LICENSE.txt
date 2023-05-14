@@ -1,0 +1,13 @@
+The files in this folder are made by DavidKBD: https://davidkbd.itch.io
+
+What follows is the license text provided by the author:
+
+---
+
+License:
+
+You are able to use any of these tracks in your project commercially and not comercially. Only you need add me to the credits, for example:
+"Music by DavidKBD"
+Or more speciphic if your project contains songs from other artists:
+"XXX Music track by DavidKBD"
+
