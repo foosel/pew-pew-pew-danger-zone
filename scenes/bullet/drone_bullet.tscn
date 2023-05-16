@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bafnh1lodbyj8"]
+[gd_scene load_steps=4 format=3 uid="uid://bafnh1lodbyj8"]
 
-[ext_resource type="PackedScene" path="res://scenes/bullet/player_bullet.tscn" id="1_na77v"]
+[ext_resource type="PackedScene" uid="uid://d4f5qnqkkq110" path="res://scenes/bullet/player_bullet.tscn" id="1_na77v"]
 [ext_resource type="Texture2D" uid="uid://c2po03roi76b5" path="res://assets/graphics/pickups/bullet_drone.svg" id="2_3qetp"]
+
+[sub_resource type="Curve" id="Curve_3fcuw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="DroneBullet" instance=ExtResource("1_na77v")]
 
@@ -11,3 +15,9 @@ texture = ExtResource("2_3qetp")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
 position = Vector2(-2.38419e-07, 0)
 scale = Vector2(1.5, 0.5)
+
+[node name="Line2D" type="Line2D" parent="." index="4"]
+show_behind_parent = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = SubResource("Curve_3fcuw")
+default_color = Color(0.654902, 0.356863, 0.117647, 0.705882)

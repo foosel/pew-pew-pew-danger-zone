@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dygd7daowtapq"]
 
-[ext_resource type="PackedScene" path="res://scenes/bullet/bullet.tscn" id="1_lnagl"]
+[ext_resource type="PackedScene" uid="uid://dxmo2up8dxaf5" path="res://scenes/bullet/bullet.tscn" id="1_lnagl"]
 
 [node name="EnemyBullet" instance=ExtResource("1_lnagl")]
 collision_layer = 4

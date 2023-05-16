@@ -46,4 +46,5 @@ func spawn_bullet(scene: PackedScene, pos: Vector2, velocity: Vector2, _base_vel
 	bullet.linear_velocity = velocity #+ base_velocity
 	bullet.target = target
 	bullet.steering = steering
+	bullet.show_trail(velocity)
 	add_child(bullet)

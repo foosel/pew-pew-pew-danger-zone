@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://dxmo2up8dxaf5"]
 
 [ext_resource type="Script" path="res://scenes/bullet/bullet.gd" id="1_87n71"]
 [ext_resource type="Texture2D" uid="uid://dkndselq427p6" path="res://assets/graphics/enemies/bullet.svg" id="2_sm3kw"]
+[ext_resource type="PackedScene" uid="uid://d1gpp4nhaenth" path="res://scenes/bullet/trail.tscn" id="3_wwfkk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnxhi"]
 radius = 5.0
@@ -24,6 +25,8 @@ position = Vector2(-2.38419e-07, -4.76837e-07)
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="Trail" parent="." instance=ExtResource("3_wwfkk")]
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
