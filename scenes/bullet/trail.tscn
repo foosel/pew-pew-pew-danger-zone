@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1gpp4nhaenth"]
+
+[ext_resource type="Script" path="res://scenes/bullet/trail.gd" id="1_483j2"]
+
+[sub_resource type="Curve" id="Curve_3fcuw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_h0vnm"]
+_data = [Vector2(0, 0.66), 0.0, 0.0, 0, 0, Vector2(0.66, 0), 0.0, 0.0, 0, 0, Vector2(0.989691, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xwf6b"]
+_data = [Vector2(0, 0.33), 0.0, 0.0, 0, 0, Vector2(0.33, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Trail" type="Node2D"]
+script = ExtResource("1_483j2")
+
+[node name="LargeLine" type="Line2D" parent="."]
+show_behind_parent = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = SubResource("Curve_3fcuw")
+default_color = Color(0.65, 0.36, 0.12, 0.33)
+
+[node name="MediumLine" type="Line2D" parent="."]
+show_behind_parent = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = SubResource("Curve_h0vnm")
+default_color = Color(0.93, 0.46, 0.08, 0.66)
+
+[node name="SmallLine" type="Line2D" parent="."]
+show_behind_parent = true
+points = PackedVector2Array(0, 0, 0, 0)
+width_curve = SubResource("Curve_xwf6b")
+default_color = Color(1, 0.635294, 0.0784314, 1)

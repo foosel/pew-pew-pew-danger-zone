@@ -13,6 +13,8 @@ func _integrate_forces(_state):
 	var direction = (target.global_position - global_position).normalized()
 	apply_central_force(direction * steering)
 
+func show_trail(direction: Vector2) -> void:
+	$Trail.show_up(direction.normalized() * 50)
 
 func explode() -> void:
 	queue_free()
