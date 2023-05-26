@@ -18,6 +18,9 @@ one_shot = true
 
 [node name="LevelDoneCheckTimer" type="Timer" parent="."]
 
+[node name="LevelDoneTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("5_7ft26")
 
@@ -49,6 +52,7 @@ visible = false
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="LevelDoneCheckTimer" to="." method="_on_level_done_check_timer_timeout"]
+[connection signal="timeout" from="LevelDoneTimer" to="." method="_on_level_done_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="drone_died" from="Player" to="." method="_on_player_drone_died"]
 [connection signal="healed" from="Player" to="." method="_on_player_healed"]
