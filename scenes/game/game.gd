@@ -266,6 +266,7 @@ func respawn_player(heal: bool = true) -> void:
 
 
 func sync_hud() -> void:
+	hud.init_bars(Player.FULL_HEALTH, Shield.FULL_HEALTH)
 	hud.set_health(player.health)
 	hud.set_score(score)
 	hud.set_lives(lives)

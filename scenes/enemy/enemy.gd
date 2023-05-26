@@ -24,7 +24,7 @@ var pickups = [
 var pickup_weights = [
 	0.5, # nothing
 	1.0, # health
-	1.0, # shield
+	1.0 if Shield.FULL_HEALTH > 0 else 0.0, # shield
 	1.0, # drone
 	1.0 # bomb
 ]
