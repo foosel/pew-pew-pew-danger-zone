@@ -6,6 +6,7 @@ class_name Game
 @onready var bullet_manager = $BulletManager as BulletManager
 @onready var respawn_timer = $RespawnTimer as Timer
 @onready var level_done_check_timer = $LevelDoneCheckTimer as Timer
+@onready var level_done_timer = $LevelDoneTimer as Timer
 @onready var camera = $Camera as ShakeableCamera
 @onready var focus_point = $FocusPoint as Node2D
 @onready var hud = $HUD as HUD
@@ -279,17 +280,17 @@ func check_level_done() -> bool:
 	if Globals.stage_done:
 		return true
 	
-	for node in get_tree().get_nodes_in_group("Pickup"):
-		if not node is Pickup:
-			continue
-		if not Globals.in_visible_viewport(node.position):
-			continue
-		# TODO why doesn't this work? deferred?
-		player.pickup(node as Pickup)
-		print("Picking up " + str(node))
-
-	Globals.stage_done = true
 	level_done_check_timer.stop()
+	print("Level about to be done…")
+	
+	level_done_timer.start()
+	
+	return true
+
+func _on_level_done_timer_timeout():
+	level_done_timer.stop()
+	
+	Globals.stage_done = true
 	print("Level done!")
 	
 	if current_level < levels.size() - 1:
@@ -298,8 +299,6 @@ func check_level_done() -> bool:
 		stage_clear.display(score, current_level + 1)
 	else:
 		call_deferred("load_level", current_level + 1)
-	
-	return true
 
 
 func trigger_game_over(won: bool) -> void:
