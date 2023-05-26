@@ -25,7 +25,6 @@ func _on_body_entered(body):
 		health -= 1
 		if health <= 0:
 				shield_sfx.play()
-				await shield_sfx.finished
 				_deactivate()
 		else:
 			Globals.shield_status.emit(true, health)
@@ -41,4 +40,5 @@ func _activate() -> void:
 
 func _deactivate() -> void:
 	Globals.shield_status.emit(false, health)
+	await shield_sfx.finished
 	queue_free()
