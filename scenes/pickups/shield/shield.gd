@@ -11,6 +11,7 @@ const FULL_HEALTH = 10
 
 func reset_health() -> void:
 	health = FULL_HEALTH
+	Globals.shield_status.emit(true, health)
 
 
 func _ready() -> void:
@@ -26,6 +27,8 @@ func _on_body_entered(body):
 				shield_sfx.play()
 				await shield_sfx.finished
 				_deactivate()
+		else:
+			Globals.shield_status.emit(true, health)
 
 
 func _on_player_died() -> void:
@@ -33,9 +36,9 @@ func _on_player_died() -> void:
 
 
 func _activate() -> void:
-	Globals.shield_status.emit(true)
+	Globals.shield_status.emit(true, health)
 
 
 func _deactivate() -> void:
-	Globals.shield_status.emit(false)
+	Globals.shield_status.emit(false, health)
 	queue_free()

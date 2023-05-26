@@ -47,10 +47,15 @@ func _process(_delta):
 	var fps = Engine.get_frames_per_second()
 	fps_label.text = str(fps) + " FPS"
 
+func init_bars(player_full_health: int, shield_full_health: int) -> void:
+	health_bar.max_value = player_full_health
+
+	bullet_bar.max_value = shield_full_health
+	bullet_bar.visible = shield_full_health > 0
+	shield_label.visible = shield_full_health > 0
 
 func set_health(health: int) -> void:
 	health_bar.value = health
-	bullet_bar.value = 6 - health
 	
 	
 func set_lives(lives: int) -> void:
@@ -86,14 +91,15 @@ func set_boss_health(amount: int) -> void:
 
 
 func reset_status_indicators() -> void:
-	_on_shield_status(false)
+	_on_shield_status(false, 0)
 	_on_drone_status(false)
 	_on_bomb_status(false)
 
 
-func _on_shield_status(state: bool) -> void:
+func _on_shield_status(state: bool, level: int) -> void:
 	print("Shield status: " + str(state))
 	shield_label.modulate = active_color if state else inactive_color
+	bullet_bar.value = level
 
 
 func _on_drone_status(state: bool) -> void:

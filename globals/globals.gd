@@ -6,7 +6,7 @@ var visible_viewport = Rect2()
 var scroll_speed = 50.0
 
 
-signal shield_status(state: bool)
+signal shield_status(state: bool, level: int)
 signal drone_status(state: bool)
 signal bomb_status(state: bool)
 
