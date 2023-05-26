@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body):
-	if body is Bullet:
+	if body is Bullet and health > 0:
 		(body as Bullet).explode()
 		health -= 1
 		if health <= 0:
